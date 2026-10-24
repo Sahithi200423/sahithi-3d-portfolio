@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chukka Sahithi – Resume</title>
+  <style>
+    /* ── Print-first: fits one US-Letter page ── */
+    @page {
+      size: letter;
+      margin: 0.5in 0.6in;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Calibri, "Segoe UI", Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.35;
+      color: #1a1a1a;
+      max-width: 7.5in;
+      margin: 0 auto;
+      padding: 0.5in 0.6in;
+    }
+
+    h1 {
+      font-size: 20pt;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2pt;
+      color: #111;
+      letter-spacing: 0.5pt;
+    }
+
+    .contact {
+      text-align: center;
+      font-size: 10pt;
+      color: #333;
+      margin-bottom: 10pt;
+    }
+
+    .contact .sep {
+      margin: 0 5pt;
+    }
+
+    h2 {
+      font-size: 11.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-bottom: 1.5pt solid #333;
+      padding-bottom: 2pt;
+      margin-top: 10pt;
+      margin-bottom: 5pt;
+      letter-spacing: 0.5pt;
+      color: #111;
+    }
+
+    .summary {
+      font-size: 10.5pt;
+      line-height: 1.4;
+      margin-bottom: 2pt;
+    }
+
+    .skills-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills-list li {
+      font-size: 10.5pt;
+      margin-bottom: 2pt;
+    }
+
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .edu-row .degree {
+      font-weight: 700;
+      font-size: 10.5pt;
+    }
+
+    .edu-row .date {
+      font-size: 10.5pt;
+      color: #444;
+    }
+
+    .edu-detail {
+      font-size: 10.5pt;
+      margin-bottom: 2pt;
+    }
+
+    .project-title {
+      font-weight: 700;
+      font-size: 10.5pt;
+      margin-top: 5pt;
+      margin-bottom: 2pt;
+    }
+
+    ul.bullets {
+      list-style: disc;
+      padding-left: 18pt;
+      margin-bottom: 2pt;
+    }
+
+    ul.bullets li {
+      font-size: 10.5pt;
+      margin-bottom: 1.5pt;
+      line-height: 1.35;
+    }
+
+    .cert-list {
+      list-style: disc;
+      padding-left: 18pt;
+    }
+
+    .cert-list li {
+      font-size: 10.5pt;
+      margin-bottom: 2pt;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CHUKKA SAHITHI</h1>
+
+  <div class="contact">
+    Email: your.email@example.com<span class="sep">|</span>Phone: +91-XXXXXXXXXX<span class="sep">|</span>LinkedIn: linkedin.com/in/yourprofile<span class="sep">|</span>GitHub: github.com/yourprofile
+  </div>
+
+  <h2>Professional Summary</h2>
+  <p class="summary">
+    Computer Science graduate with hands-on experience in Python, SQL, Data Analysis, Machine Learning, Artificial Intelligence, and Microsoft Azure. Developed projects involving data preprocessing, classification, CNN-based image recognition, and multilingual chatbot solutions. Seeking an entry-level Data Analyst role to apply analytical and technical skills while contributing to data-driven solutions.
+  </p>
+
+  <h2>Education</h2>
+  <div class="edu-row">
+    <span class="degree">B.Tech – Computer Science and Engineering</span>
+    <span class="date">2022 – 2026</span>
+  </div>
+  <div class="edu-detail">Andhra University College of Engineering, Andhra University &nbsp;|&nbsp; CGPA: 7.46</div>
+
+  <h2>Technical Skills</h2>
+  <ul class="skills-list">
+    <li><strong>Programming Languages:</strong> Python, C, C++</li>
+    <li><strong>Data &amp; Database:</strong> SQL, Data Analysis, Machine Learning</li>
+    <li><strong>AI &amp; Cloud:</strong> Artificial Intelligence, Microsoft Azure, Azure Machine Learning, AWS, Cloud Computing</li>
+    <li><strong>Web Technologies:</strong> HTML, CSS, React, FastAPI</li>
+    <li><strong>Tools:</strong> Git, Bash, Microsoft Office</li>
+  </ul>
+
+  <h2>Projects</h2>
+
+  <div class="project-title">AI-Based Handwritten Digit Recognition System</div>
+  <ul class="bullets">
+    <li>Built a CNN model using Python and TensorFlow to classify handwritten digits from the MNIST dataset with high accuracy.</li>
+    <li>Performed image preprocessing including normalization and reshaping to optimize model input for training.</li>
+    <li>Evaluated model performance using accuracy metrics and confusion matrix; enabled real-time digit prediction.</li>
+  </ul>
+
+  <div class="project-title">AI-Based Diabetes Prediction System</div>
+  <ul class="bullets">
+    <li>Developed a supervised Machine Learning classification model to predict diabetes based on patient health data.</li>
+    <li>Conducted data preprocessing and feature analysis to identify key predictive variables and improve model accuracy.</li>
+    <li>Implemented a user-input prediction interface allowing real-time health-risk classification.</li>
+  </ul>
+
+  <div class="project-title">Multilingual AI FAQ Chatbot</div>
+  <ul class="bullets">
+    <li>Built a full-stack FAQ chatbot using React, Tailwind CSS (frontend) and FastAPI (backend) supporting English, Hindi, and Telugu.</li>
+    <li>Implemented dynamic language switching and interactive FAQ-based user interaction for a seamless multilingual experience.</li>
+  </ul>
+
+  <div class="project-title">Web Development Projects</div>
+  <ul class="bullets">
+    <li>Designed and developed responsive web pages including a Login page, Weather dashboard, and Food menu page using HTML, CSS, and JavaScript.</li>
+  </ul>
+
+  <h2>Microsoft Learn Achievements</h2>
+  <ul class="cert-list">
+    <li>Explore and Configure the Azure Machine Learning Workspace — Microsoft Learn, September 2026</li>
+    <li>Develop Natural Language Solutions in Azure — Microsoft Learn, September 2026</li>
+  </ul>
+
+</body>
+</html>
