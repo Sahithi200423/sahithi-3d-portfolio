@@ -5,11 +5,11 @@
   "description": "Sahithi Chukka - Premium Developer Portfolio Website",
   "scripts": {
     "dev": "npx vite",
-    "build": "vite build && node -e \"const fs=require('fs'); const src='assets'; const dst='dist/assets'; if(fs.existsSync(src)){ fs.cpSync(src, dst, {recursive: true}); console.log('Static assets synchronized successfully into dist/assets'); }\"",
+    "build": "vite build && node copy-assets.js",
     "preview": "npx vite preview",
     "test": "node ../../../.gemini/antigravity-ide/brain/6a94bcb9-8793-4d5d-93f9-114942d4ce2c/scratch/verify_audit.cjs"
   },
-  "devDependencies": {
+  "dependencies": {
     "vite": "^6.0.0"
   }
 }
