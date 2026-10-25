@@ -1,34 +1,37 @@
 /* ==========================================================================
    SAHITHI CHUKKA - Premium Futuristic Developer Portfolio
    Interactive Engine:
-   1. Global 3D Asset Switcher (Avatar / Sculpture / GitHub)
-   2. Background Animated Particle-Network Canvas
-   3. Sticky Navbar with IntersectionObserver Active Section Highlighting
-   4. Futuristic Accent Theme Switcher
-   5. Interactive Technology Constellation Canvas with Node Physics & Hover Details
-   6. Skills, Projects, and Certifications Filtering Engines
-   7. MoodCanvas Dynamic Harmonic Palette Randomizer
-   8. Working Contact Form with Validation & Feedback States
+   1. Authentic Portrait View Switcher & 3D Tilt Parallax Engine
+   2. Mobile Drawer Navigation & Sticky Navbar Highlighting
+   3. Background Animated Particle-Network Canvas
+   4. Futuristic Theme Accent Switcher
+   5. Interactive Technology Constellation Canvas with Node Physics
+   6. Skills, Projects, and Certifications Filter Engines
+   7. MoodCanvas Dynamic Harmonic Palette Generator
+   8. Verified Contact Form with Live Validation & Honest Mailto Fallback
    9. Lightbox Screenshot Modal Manager
-   10. Clipboard Helpers & Toast Notifications
-   11. Portfolio AI Assistant Interactive Chatbot
+   10. Clipboard Utilities & Feedback Toasts
+   11. Portfolio AI Assistant Chatbot
    ========================================================================== */
 
-// --- 1. GLOBAL 3D HERO ASSET SWITCHER ---
-window.setHeroVisual = function(mode) {
-  const btnCharacter = document.getElementById('btnCharacter');
-  const btnSculpture = document.getElementById('btnSculpture');
-  const btnGithubAvatar = document.getElementById('btnGithubAvatar');
+// --- 1. GLOBAL PORTRAIT VIEW SWITCHER ---
+window.setPortraitView = function(mode) {
+  const btnOutdoor = document.getElementById('btnViewOutdoor');
+  const btnStudio = document.getElementById('btnViewStudio');
+  const btnAvatar = document.getElementById('btnViewAvatar');
+  const btnSculpture = document.getElementById('btnViewSculpture');
 
-  const paneAvatar = document.getElementById('paneAvatar');
-  const paneSculpture = document.getElementById('paneSculpture');
-  const paneGithub = document.getElementById('paneGithub');
-  const heroGlow = document.getElementById('heroGlow');
+  const viewOutdoor = document.getElementById('viewPortraitOutdoor');
+  const viewStudio = document.getElementById('viewPortraitStudio');
+  const viewAvatar = document.getElementById('viewPortraitAvatar');
+  const viewSculpture = document.getElementById('viewPortraitSculpture');
+  const ambientGlow = document.getElementById('portraitAmbientGlow');
 
   const buttons = [
-    { el: btnCharacter, active: mode === 'avatar' },
-    { el: btnSculpture, active: mode === 'sculpture' },
-    { el: btnGithubAvatar, active: mode === 'github' }
+    { el: btnOutdoor, active: mode === 'outdoor' },
+    { el: btnStudio, active: mode === 'studio' },
+    { el: btnAvatar, active: mode === 'avatar' },
+    { el: btnSculpture, active: mode === 'sculpture' }
   ];
 
   buttons.forEach(({ el, active }) => {
@@ -38,28 +41,29 @@ window.setHeroVisual = function(mode) {
     }
   });
 
-  if (paneAvatar) {
-    paneAvatar.classList.toggle('active', mode === 'avatar');
-    paneAvatar.style.display = mode === 'avatar' ? 'block' : 'none';
-  }
-  if (paneSculpture) {
-    paneSculpture.classList.toggle('active', mode === 'sculpture');
-    paneSculpture.style.display = mode === 'sculpture' ? 'block' : 'none';
-  }
-  if (paneGithub) {
-    paneGithub.classList.toggle('active', mode === 'github');
-    paneGithub.style.display = mode === 'github' ? 'flex' : 'none';
-  }
+  if (viewOutdoor) viewOutdoor.classList.toggle('active', mode === 'outdoor');
+  if (viewStudio) viewStudio.classList.toggle('active', mode === 'studio');
+  if (viewAvatar) viewAvatar.classList.toggle('active', mode === 'avatar');
+  if (viewSculpture) viewSculpture.classList.toggle('active', mode === 'sculpture');
 
-  if (heroGlow) {
-    if (mode === 'avatar') {
-      heroGlow.style.background = 'radial-gradient(circle, rgba(0, 240, 255, 0.35) 0%, rgba(168, 85, 247, 0.25) 45%, transparent 70%)';
-    } else if (mode === 'github') {
-      heroGlow.style.background = 'radial-gradient(circle, rgba(0, 240, 255, 0.4) 0%, rgba(16, 185, 129, 0.25) 45%, transparent 70%)';
+  if (ambientGlow) {
+    if (mode === 'outdoor') {
+      ambientGlow.style.background = 'radial-gradient(circle, rgba(0, 240, 255, 0.35) 0%, rgba(168, 85, 247, 0.28) 45%, transparent 70%)';
+    } else if (mode === 'studio') {
+      ambientGlow.style.background = 'radial-gradient(circle, rgba(16, 185, 129, 0.35) 0%, rgba(0, 240, 255, 0.25) 45%, transparent 70%)';
+    } else if (mode === 'avatar') {
+      ambientGlow.style.background = 'radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(236, 72, 153, 0.25) 45%, transparent 70%)';
     } else {
-      heroGlow.style.background = 'radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, rgba(0, 240, 255, 0.15) 45%, transparent 70%)';
+      ambientGlow.style.background = 'radial-gradient(circle, rgba(226, 232, 240, 0.35) 0%, rgba(168, 85, 247, 0.2) 45%, transparent 70%)';
     }
   }
+};
+
+// Legacy compatibility for any case study buttons referencing setHeroVisual
+window.setHeroVisual = function(mode) {
+  if (mode === 'github' || mode === 'avatar') window.setPortraitView('avatar');
+  else if (mode === 'sculpture') window.setPortraitView('sculpture');
+  else window.setPortraitView('outdoor');
 };
 
 // --- 2. GLOBAL LIGHTBOX MODAL MANAGER ---
@@ -86,7 +90,7 @@ window.closeLightbox = function() {
   document.body.style.overflow = '';
 };
 
-// --- CORE APPLICATION INITIALIZATION ---
+// --- MAIN PORTFOLIO INITIALIZATION ---
 function initPortfolio() {
 
   // =========================================================================
@@ -97,8 +101,8 @@ function initPortfolio() {
     const ctx = bgCanvas.getContext('2d');
     let width, height;
     let particles = [];
-    const particleCount = window.innerWidth < 768 ? 35 : 70;
-    let mouse = { x: null, y: null, maxDist: 140 };
+    const particleCount = window.innerWidth < 768 ? 30 : 65;
+    let mouse = { x: null, y: null, maxDist: 130 };
 
     function resizeCanvas() {
       width = bgCanvas.width = window.innerWidth;
@@ -121,11 +125,11 @@ function initPortfolio() {
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.6;
-        this.vy = (Math.random() - 0.5) * 0.6;
-        this.radius = Math.random() * 1.8 + 0.8;
-        this.color = Math.random() > 0.4 ? 'rgba(168, 85, 247, ' : 'rgba(0, 240, 255, ';
-        this.alpha = Math.random() * 0.5 + 0.2;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 1.6 + 0.8;
+        this.color = Math.random() > 0.4 ? 'rgba(0, 240, 255, ' : 'rgba(168, 85, 247, ';
+        this.alpha = Math.random() * 0.45 + 0.15;
       }
 
       update() {
@@ -137,15 +141,14 @@ function initPortfolio() {
         if (this.y < 0) this.y = height;
         if (this.y > height) this.y = 0;
 
-        // Subtle mouse repulsion
         if (mouse.x !== null && mouse.y !== null) {
           const dx = this.x - mouse.x;
           const dy = this.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < mouse.maxDist) {
             const force = (mouse.maxDist - dist) / mouse.maxDist;
-            this.x += (dx / dist) * force * 1.2;
-            this.y += (dy / dist) * force * 1.2;
+            this.x += (dx / dist) * force * 1.1;
+            this.y += (dy / dist) * force * 1.1;
           }
         }
       }
@@ -174,20 +177,19 @@ function initPortfolio() {
       if (!isVisible || prefersReducedMotion) return;
       ctx.clearRect(0, 0, width, height);
 
-      // Connect particles with network lines
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 120) {
-            const lineAlpha = (1 - dist / 120) * 0.22;
+          if (dist < 115) {
+            const lineAlpha = (1 - dist / 115) * 0.18;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(168, 85, 247, ${lineAlpha})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = 'rgba(0, 240, 255, ' + lineAlpha + ')';
+            ctx.lineWidth = 0.75;
             ctx.stroke();
           }
         }
@@ -207,10 +209,58 @@ function initPortfolio() {
   }
 
   // =========================================================================
-  // 4. STICKY NAVBAR SCROLL ELEVATION & ACTIVE SECTION HIGHLIGHTING
+  // 4. 3D TILT & PARALLAX ON AUTHENTIC PORTRAIT FRAME
+  // =========================================================================
+  const portraitContainer = document.getElementById('portraitStageContainer');
+  const tiltCard = document.getElementById('portraitTiltCard');
+  const floatingChips = document.querySelectorAll('.floating-tech-chip');
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (portraitContainer && tiltCard && !prefersReduced && window.innerWidth >= 900) {
+    let bounds = null;
+
+    function updateBounds() {
+      bounds = portraitContainer.getBoundingClientRect();
+    }
+    updateBounds();
+    window.addEventListener('resize', updateBounds, { passive: true });
+    window.addEventListener('scroll', updateBounds, { passive: true });
+
+    portraitContainer.addEventListener('mousemove', (e) => {
+      if (!bounds) updateBounds();
+      const mouseX = e.clientX - bounds.left;
+      const mouseY = e.clientY - bounds.top;
+
+      const normX = (mouseX / bounds.width - 0.5) * 2; // -1 to 1
+      const normY = (mouseY / bounds.height - 0.5) * 2; // -1 to 1
+
+      const tiltX = -normY * 9; // Max 9 deg
+      const tiltY = normX * 9;
+
+      tiltCard.style.transform = 'perspective(1000px) rotateX(' + tiltX.toFixed(2) + 'deg) rotateY(' + tiltY.toFixed(2) + 'deg) scale3d(1.02, 1.02, 1.02)';
+
+      floatingChips.forEach(chip => {
+        const depth = parseFloat(chip.getAttribute('data-depth')) || 25;
+        const moveX = normX * (depth * 0.35);
+        const moveY = normY * (depth * 0.35);
+        chip.style.transform = 'translate3d(' + moveX.toFixed(1) + 'px, ' + moveY.toFixed(1) + 'px, ' + depth + 'px)';
+      });
+    });
+
+    portraitContainer.addEventListener('mouseleave', () => {
+      tiltCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      floatingChips.forEach(chip => {
+        chip.style.transform = 'translate3d(0, 0, 0)';
+      });
+    });
+  }
+
+  // =========================================================================
+  // 5. STICKY NAVBAR SCROLL ELEVATION & ACTIVE SECTION HIGHLIGHTING
   // =========================================================================
   const navbar = document.getElementById('mainNavbar');
   const navLinksList = document.querySelectorAll('.nav-links .nav-link');
+  const drawerLinksList = document.querySelectorAll('.mobile-drawer-links .mobile-drawer-link');
   const sections = document.querySelectorAll('section[id]');
 
   window.addEventListener('scroll', () => {
@@ -228,269 +278,222 @@ function initPortfolio() {
           const currentId = entry.target.getAttribute('id');
           navLinksList.forEach(link => {
             const href = link.getAttribute('href');
-            if (href === `#${currentId}`) {
-              link.classList.add('active');
-            } else {
-              link.classList.remove('active');
-            }
+            link.classList.toggle('active', href === ('#' + currentId));
+          });
+          drawerLinksList.forEach(link => {
+            const href = link.getAttribute('href');
+            link.classList.toggle('active', href === ('#' + currentId));
           });
         }
       });
     }, {
-      rootMargin: '-20% 0px -65% 0px'
+      rootMargin: '-25% 0px -60% 0px'
     });
 
     sections.forEach(sec => navObserver.observe(sec));
   }
 
   // =========================================================================
-  // 5. ACCENT THEME SWITCHER
+  // 6. MOBILE DRAWER NAVIGATION MENU
+  // =========================================================================
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+  const mobileDrawerOverlay = document.getElementById('mobileDrawerOverlay');
+  const mobileDrawerCloseBtn = document.getElementById('mobileDrawerCloseBtn');
+  const mobileDrawerLinks = document.querySelectorAll('.mobile-drawer-link');
+
+  function openMobileMenu() {
+    mobileDrawer?.classList.add('active');
+    mobileDrawerOverlay?.classList.add('active');
+    mobileMenuBtn?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileMenu() {
+    mobileDrawer?.classList.remove('active');
+    mobileDrawerOverlay?.classList.remove('active');
+    mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    const isOpen = mobileDrawer?.classList.contains('active');
+    if (isOpen) closeMobileMenu();
+    else openMobileMenu();
+  });
+
+  mobileDrawerCloseBtn?.addEventListener('click', closeMobileMenu);
+  mobileDrawerOverlay?.addEventListener('click', closeMobileMenu);
+
+  mobileDrawerLinks.forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeMobileMenu();
+      window.closeLightbox();
+      closeChatbot();
+    }
+  });
+
+  // =========================================================================
+  // 7. FUTURISTIC THEME ACCENT SWITCHER
   // =========================================================================
   const themeAccentBtn = document.getElementById('themeAccentBtn');
-  const accents = ['purple', 'cyan', 'emerald'];
+  const accents = ['default', 'cyan', 'emerald'];
   let currentAccentIdx = 0;
 
   if (themeAccentBtn) {
     themeAccentBtn.addEventListener('click', () => {
+      document.body.classList.remove('theme-accent-cyan', 'theme-accent-emerald');
       currentAccentIdx = (currentAccentIdx + 1) % accents.length;
-      const newAccent = accents[currentAccentIdx];
-      if (newAccent === 'purple') {
-        document.documentElement.removeAttribute('data-accent');
-      } else {
-        document.documentElement.setAttribute('data-accent', newAccent);
-      }
-      showToast(`Switched accent to ${newAccent.toUpperCase()}`);
-    });
-  }
-
-  // =========================================================================
-  // 6. MOBILE DRAWER NAVIGATION
-  // =========================================================================
-  const mobileBtn = document.getElementById('mobileMenuBtn');
-  const navLinks = document.getElementById('navLinks');
-  const menuIcon = document.getElementById('menuIcon');
-
-  if (mobileBtn && navLinks) {
-    mobileBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = navLinks.classList.toggle('mobile-open');
-      mobileBtn.setAttribute('aria-expanded', String(isOpen));
-      if (menuIcon) {
-        menuIcon.textContent = isOpen ? '✕' : '☰';
-      }
-    });
-
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('mobile-open');
-        mobileBtn.setAttribute('aria-expanded', 'false');
-        if (menuIcon) menuIcon.textContent = '☰';
-      });
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!navLinks.contains(e.target) && !mobileBtn.contains(e.target)) {
-        if (navLinks.classList.contains('mobile-open')) {
-          navLinks.classList.remove('mobile-open');
-          mobileBtn.setAttribute('aria-expanded', 'false');
-          if (menuIcon) menuIcon.textContent = '☰';
-        }
-      }
-    });
-  }
-
-  // =========================================================================
-  // 7. SCROLL-TRIGGERED REVEAL ANIMATIONS
-  // =========================================================================
-  const revealElements = document.querySelectorAll('.reveal-init');
-  if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal-active');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
-    });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-  } else {
-    revealElements.forEach(el => el.classList.add('reveal-active'));
-  }
-
-  // =========================================================================
-  // 8. 3D HERO VISUAL STAGE & MOUSE TILT (Desktop Parallax with Touch Decoupling)
-  // =========================================================================
-  const heroStage = document.getElementById('heroStage');
-  const hero3DVisual = document.getElementById('hero3DVisual');
-  const isTouchDevice = typeof window.matchMedia === 'function' ? window.matchMedia('(pointer: coarse)').matches : false;
-  const prefersReduced = typeof window.matchMedia === 'function' ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
-
-  if (heroStage && hero3DVisual && !prefersReduced && !isTouchDevice) {
-    heroStage.addEventListener('mousemove', (e) => {
-      const rect = heroStage.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+      const nextAccent = accents[currentAccentIdx];
       
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      const tiltX = ((y - centerY) / centerY) * -8;
-      const tiltY = ((x - centerX) / centerX) * 8;
-
-      hero3DVisual.style.transform = `perspective(900px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale(1.02)`;
-
-      const holoLeft = document.querySelector('.holo-panel-top-left');
-      const holoRight = document.querySelector('.holo-panel-top-right');
-      if (holoLeft) holoLeft.style.transform = `translate3d(${(-tiltY * 0.7).toFixed(1)}px, ${(-tiltX * 0.7).toFixed(1)}px, 15px)`;
-      if (holoRight) holoRight.style.transform = `translate3d(${(tiltY * 0.7).toFixed(1)}px, ${(-tiltX * 0.7).toFixed(1)}px, 15px)`;
-    });
-
-    heroStage.addEventListener('mouseleave', () => {
-      hero3DVisual.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)';
-      const holoLeft = document.querySelector('.holo-panel-top-left');
-      const holoRight = document.querySelector('.holo-panel-top-right');
-      if (holoLeft) holoLeft.style.transform = '';
-      if (holoRight) holoRight.style.transform = '';
+      if (nextAccent !== 'default') {
+        document.body.classList.add('theme-accent-' + nextAccent);
+      }
+      
+      const icons = { default: '⚡', cyan: '💎', emerald: '🌿' };
+      themeAccentBtn.textContent = icons[nextAccent] || '⚡';
+      showToast('Futuristic accent: ' + nextAccent.toUpperCase());
     });
   }
 
   // =========================================================================
-  // 9. INTERACTIVE SKILLS CONSTELLATION CANVAS
+  // 8. INTERACTIVE TECHNOLOGY CONSTELLATION CANVAS
   // =========================================================================
-  const constCanvas = document.getElementById('skillsConstellationCanvas');
-  const constBox = document.getElementById('constellationBox');
-  const nodeIcon = document.getElementById('nodeIcon');
-  const nodeName = document.getElementById('nodeName');
-  const nodeContext = document.getElementById('nodeContext');
-  const nodeProficiency = document.getElementById('nodeProficiency');
+  const constellationCanvas = document.getElementById('skillsConstellationCanvas');
+  const constellationBox = document.getElementById('constellationBox');
 
-  if (constCanvas && constCanvas.getContext && constBox) {
-    const cCtx = constCanvas.getContext('2d');
-    let cW, cH;
+  if (constellationCanvas && constellationCanvas.getContext) {
+    const cCtx = constellationCanvas.getContext('2d');
+    let cWidth, cHeight;
 
     function resizeConstellation() {
-      cW = constCanvas.width = constBox.clientWidth;
-      cH = constCanvas.height = constBox.clientHeight;
+      if (!constellationBox) return;
+      cWidth = constellationCanvas.width = constellationBox.clientWidth;
+      cHeight = constellationCanvas.height = constellationBox.clientHeight;
     }
     resizeConstellation();
     window.addEventListener('resize', resizeConstellation, { passive: true });
 
-    const nodes = [
-      { id: 'react', name: 'React 19', icon: '⚛', category: 'Frontend', context: 'Core UI architecture in CineBook V2, SceneLingo & Groundwater', xRel: 0.28, yRel: 0.35, r: 24, color: '#00f0ff' },
-      { id: 'ts', name: 'TypeScript', icon: '🔷', category: 'Language', context: 'Strict static type definitions & interfaces across all modern projects', xRel: 0.44, yRel: 0.24, r: 22, color: '#3178c6' },
-      { id: 'three', name: 'Three.js WebGL', icon: '🧊', category: 'Graphics', context: 'Interactive floating 3D cinema pass hero with bounded sine-wave tilt', xRel: 0.16, yRel: 0.58, r: 20, color: '#a855f7' },
-      { id: 'tailwind', name: 'Tailwind CSS', icon: '🎨', category: 'Styling', context: 'Utility-first modern design token systems in CineBook & SceneLingo', xRel: 0.38, yRel: 0.55, r: 20, color: '#38bdf8' },
-      { id: 'supabase', name: 'Supabase PostgreSQL', icon: '⚡', category: 'Database', context: 'Atomic row-level holds & 10-minute concurrency locking engine', xRel: 0.62, yRel: 0.38, r: 22, color: '#10b981' },
-      { id: 'node', name: 'Node.js & Express', icon: '🟢', category: 'Backend', context: 'REST APIs, single-hop proxy trust, HMAC-SHA256 webhooks, and rate limiters', xRel: 0.54, yRel: 0.66, r: 21, color: '#22c55e' },
-      { id: 'python', name: 'Python & AI', icon: '🐍', category: 'AI & Data', context: 'CNN handwritten digit recognition, ML classification & Azure ML workspace', xRel: 0.76, yRel: 0.28, r: 20, color: '#f59e0b' },
-      { id: 'azure', name: 'Microsoft Azure', icon: '☁', category: 'Cloud', context: 'Microsoft Learn Certified: Azure ML Workspace & Natural Language Solutions', xRel: 0.84, yRel: 0.52, r: 20, color: '#0284c7' },
-      { id: 'speech', name: 'Web Speech API', icon: '🎙', category: 'Browser API', context: 'Bilingual audio synthesis engine for Telugu & Hindi in SceneLingo', xRel: 0.72, yRel: 0.72, r: 19, color: '#ec4899' },
-      { id: 'git', name: 'Git & GitHub', icon: '🐙', category: 'Tools', context: 'Branch management, feature commits, releases, and CI/CD workflows', xRel: 0.48, yRel: 0.84, r: 19, color: '#e2e8f0' }
+    const techNodes = [
+      { id: 'react', name: 'React 19', icon: '⚛', category: 'Frontend', context: 'Architecture in CineBook V3, SceneLingo & Groundwater Platform', xRel: 0.18, yRel: 0.28, r: 24, color: '#00d8ff' },
+      { id: 'ts', name: 'TypeScript', icon: 'TS', category: 'Language', context: 'Strict typing across all application models, props, and hooks', xRel: 0.38, yRel: 0.22, r: 24, color: '#3178c6' },
+      { id: 'three', name: 'Three.js / WebGL', icon: '✦', category: '3D Graphics', context: 'Interactive 3D cinema pass, bounded tilt & GPU rendering', xRel: 0.58, yRel: 0.32, r: 22, color: '#a855f7' },
+      { id: 'supabase', name: 'Supabase (PostgreSQL)', icon: '⚡', category: 'Database', context: 'Atomic row-level locks, 10-minute hold TTL & CRUD services', xRel: 0.78, yRel: 0.26, r: 24, color: '#10b981' },
+      { id: 'tailwind', name: 'Tailwind CSS 4', icon: '🎨', category: 'Styling', context: 'Responsive layouts, dark glassmorphism & typography', xRel: 0.26, yRel: 0.68, r: 22, color: '#38bdf8' },
+      { id: 'speech', name: 'Web Speech API', icon: '🎙', category: 'Browser API', context: 'Multilingual audio speech synthesis in SceneLingo', xRel: 0.48, yRel: 0.62, r: 22, color: '#ec4899' },
+      { id: 'camera', name: 'MediaRecorder', icon: '📹', category: 'Hardware API', context: 'In-browser webcam video rehearsal recording in SceneLingo', xRel: 0.68, yRel: 0.72, r: 22, color: '#f59e0b' },
+      { id: 'git', name: 'Git & GitHub', icon: '🐙', category: 'Workflow', context: 'Branch management, feature commits, releases & verification', xRel: 0.44, yRel: 0.84, r: 20, color: '#e2e8f0' },
+      { id: 'vercel', name: 'Vercel Edge', icon: '▲', category: 'Deployment', context: 'Edge network deployment, sub-second TTFB & HTTPS', xRel: 0.84, yRel: 0.65, r: 20, color: '#ffffff' }
     ];
 
-    const connections = [
+    const techLinks = [
       ['react', 'ts'],
       ['react', 'three'],
       ['react', 'tailwind'],
-      ['react', 'supabase'],
-      ['ts', 'node'],
-      ['supabase', 'node'],
-      ['python', 'azure'],
+      ['ts', 'supabase'],
       ['react', 'speech'],
-      ['node', 'git'],
-      ['ts', 'git'],
-      ['azure', 'supabase']
+      ['speech', 'camera'],
+      ['supabase', 'vercel'],
+      ['react', 'git'],
+      ['ts', 'vercel']
     ];
 
     let hoveredNode = null;
     let cMouse = { x: null, y: null };
 
-    constCanvas.addEventListener('mousemove', (e) => {
-      const rect = constCanvas.getBoundingClientRect();
+    constellationCanvas.addEventListener('mousemove', (e) => {
+      const rect = constellationCanvas.getBoundingClientRect();
       cMouse.x = e.clientX - rect.left;
       cMouse.y = e.clientY - rect.top;
 
       let found = null;
-      nodes.forEach(node => {
-        const nx = node.xRel * cW;
-        const ny = node.yRel * cH;
+      techNodes.forEach(node => {
+        const nx = node.xRel * cWidth;
+        const ny = node.yRel * cHeight;
         const dist = Math.hypot(nx - cMouse.x, ny - cMouse.y);
-        if (dist <= node.r + 6) {
-          found = node;
-        }
+        if (dist < node.r + 8) found = node;
       });
 
-      if (found !== hoveredNode) {
-        hoveredNode = found;
-        if (hoveredNode) {
-          if (nodeIcon) nodeIcon.textContent = hoveredNode.icon;
-          if (nodeName) nodeName.textContent = `${hoveredNode.name} • ${hoveredNode.category}`;
-          if (nodeContext) nodeContext.textContent = hoveredNode.context;
-          if (nodeProficiency) nodeProficiency.textContent = 'Verified in Production Code';
-        }
+      hoveredNode = found;
+      constellationCanvas.style.cursor = found ? 'pointer' : 'default';
+
+      if (found) {
+        const nodeIcon = document.getElementById('nodeIcon');
+        const nodeName = document.getElementById('nodeName');
+        const nodeContext = document.getElementById('nodeContext');
+        if (nodeIcon) nodeIcon.textContent = found.icon;
+        if (nodeName) nodeName.textContent = found.name + ' • ' + found.category;
+        if (nodeContext) nodeContext.textContent = found.context;
       }
     });
 
-    constCanvas.addEventListener('mouseleave', () => {
+    constellationCanvas.addEventListener('mouseleave', () => {
       hoveredNode = null;
       cMouse.x = null;
       cMouse.y = null;
     });
 
     function renderConstellation() {
-      cCtx.clearRect(0, 0, cW, cH);
+      cCtx.clearRect(0, 0, cWidth, cHeight);
 
-      // Draw Connections
-      connections.forEach(([id1, id2]) => {
-        const n1 = nodes.find(n => n.id === id1);
-        const n2 = nodes.find(n => n.id === id2);
-        if (!n1 || !n2) return;
+      // Draw links
+      techLinks.forEach(([fromId, toId]) => {
+        const fromNode = techNodes.find(n => n.id === fromId);
+        const toNode = techNodes.find(n => n.id === toId);
+        if (!fromNode || !toNode) return;
 
-        const x1 = n1.xRel * cW;
-        const y1 = n1.yRel * cH;
-        const x2 = n2.xRel * cW;
-        const y2 = n2.yRel * cH;
+        const x1 = fromNode.xRel * cWidth;
+        const y1 = fromNode.yRel * cHeight;
+        const x2 = toNode.xRel * cWidth;
+        const y2 = toNode.yRel * cHeight;
 
-        const isHighlighted = hoveredNode && (hoveredNode.id === id1 || hoveredNode.id === id2);
+        const isHighlighted = hoveredNode && (hoveredNode.id === fromId || hoveredNode.id === toId);
 
         cCtx.beginPath();
         cCtx.moveTo(x1, y1);
         cCtx.lineTo(x2, y2);
-        cCtx.strokeStyle = isHighlighted ? 'rgba(0, 240, 255, 0.7)' : 'rgba(168, 85, 247, 0.2)';
-        cCtx.lineWidth = isHighlighted ? 2.2 : 1;
+        cCtx.strokeStyle = isHighlighted ? 'rgba(0, 240, 255, 0.7)' : 'rgba(255, 255, 255, 0.1)';
+        cCtx.lineWidth = isHighlighted ? 2 : 1;
         cCtx.stroke();
       });
 
-      // Draw Nodes
-      nodes.forEach(node => {
-        const nx = node.xRel * cW;
-        const ny = node.yRel * cH;
+      // Draw nodes
+      techNodes.forEach(node => {
+        const nx = node.xRel * cWidth;
+        const ny = node.yRel * cHeight;
         const isHovered = hoveredNode && hoveredNode.id === node.id;
 
-        // Glowing outer halo
-        cCtx.beginPath();
-        cCtx.arc(nx, ny, node.r + (isHovered ? 8 : 4), 0, Math.PI * 2);
-        cCtx.fillStyle = isHovered ? 'rgba(0, 240, 255, 0.25)' : 'rgba(168, 85, 247, 0.12)';
-        cCtx.fill();
+        // Outer glow
+        if (isHovered) {
+          cCtx.beginPath();
+          cCtx.arc(nx, ny, node.r + 10, 0, Math.PI * 2);
+          cCtx.fillStyle = 'rgba(0, 240, 255, 0.25)';
+          cCtx.fill();
+        }
 
-        // Node Circle Body
+        // Node circle
         cCtx.beginPath();
         cCtx.arc(nx, ny, node.r, 0, Math.PI * 2);
-        cCtx.fillStyle = '#0a0b16';
+        cCtx.fillStyle = '#0a0f1e';
         cCtx.fill();
-        cCtx.lineWidth = isHovered ? 2.5 : 1.5;
         cCtx.strokeStyle = isHovered ? '#00f0ff' : node.color;
+        cCtx.lineWidth = isHovered ? 2.5 : 1.5;
         cCtx.stroke();
 
-        // Node Label
-        cCtx.font = `${isHovered ? 'bold ' : ''}11px Plus Jakarta Sans, sans-serif`;
-        cCtx.fillStyle = isHovered ? '#ffffff' : '#e2e8f0';
+        // Node text
+        cCtx.font = 'bold 11px sans-serif';
+        cCtx.fillStyle = '#ffffff';
         cCtx.textAlign = 'center';
         cCtx.textBaseline = 'middle';
+        cCtx.fillText(node.icon, nx, ny);
+
+        // Label below
+        cCtx.font = '10px "JetBrains Mono", monospace';
+        cCtx.fillStyle = isHovered ? '#00f0ff' : '#9ea4c2';
         cCtx.fillText(node.name, nx, ny + node.r + 14);
       });
 
@@ -501,99 +504,93 @@ function initPortfolio() {
   }
 
   // =========================================================================
-  // 10. SKILLS FILTER TABS
+  // 9. CATEGORY FILTERS (SKILLS, PROJECTS, CERTIFICATIONS)
   // =========================================================================
-  const filterBtns = document.querySelectorAll('.skills-filter-nav .filter-btn');
+  // Skills filter
+  const skillFilterBtns = document.querySelectorAll('.skills-filter-nav .filter-btn');
   const skillCards = document.querySelectorAll('.skills-categories-grid .skill-category-card');
 
-  filterBtns.forEach(btn => {
+  skillFilterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const filterValue = btn.getAttribute('data-filter');
-
-      filterBtns.forEach(b => {
-        const isSelected = b === btn;
-        b.classList.toggle('active', isSelected);
-        b.setAttribute('aria-selected', String(isSelected));
+      const filter = btn.getAttribute('data-filter');
+      skillFilterBtns.forEach(b => {
+        const isSel = b === btn;
+        b.classList.toggle('active', isSel);
+        b.setAttribute('aria-selected', String(isSel));
       });
 
       skillCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        const shouldShow = filterValue === 'all' || category === filterValue;
-        card.style.display = shouldShow ? 'block' : 'none';
-      });
-    });
-  });
-
-  // =========================================================================
-  // 11. PROJECTS FILTER TABS
-  // =========================================================================
-  const projFilterBtns = document.querySelectorAll('.projects-filter-nav .filter-btn');
-  const projectCards = document.querySelectorAll('.projects-feed .project-card-editorial');
-
-  projFilterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filterVal = btn.getAttribute('data-proj-filter');
-
-      projFilterBtns.forEach(b => b.classList.toggle('active', b === btn));
-
-      projectCards.forEach(card => {
-        const cardCat = card.getAttribute('data-category');
-        const show = filterVal === 'all' || cardCat === filterVal;
+        const cat = card.getAttribute('data-category');
+        const show = filter === 'all' || cat === filter;
         card.style.display = show ? 'block' : 'none';
       });
     });
   });
 
-  // =========================================================================
-  // 12. CERTIFICATIONS TABS
-  // =========================================================================
+  // Projects filter
+  const projFilterBtns = document.querySelectorAll('.projects-filter-nav .filter-btn');
+  const projectCards = document.querySelectorAll('.projects-feed .project-card-editorial');
+
+  projFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-proj-filter');
+      projFilterBtns.forEach(b => b.classList.toggle('active', b === btn));
+
+      projectCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const show = filter === 'all' || cat === filter;
+        card.style.display = show ? 'block' : 'none';
+      });
+    });
+  });
+
+  // Certifications filter
   const certTabBtns = document.querySelectorAll('.cert-tabs-nav .filter-btn');
   const certCards = document.querySelectorAll('.cert-cards-grid .cert-card');
 
   certTabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const tabVal = btn.getAttribute('data-cert-tab');
-
+      const filter = btn.getAttribute('data-cert-tab');
       certTabBtns.forEach(b => b.classList.toggle('active', b === btn));
 
       certCards.forEach(card => {
-        const cardCat = card.getAttribute('data-cert-cat');
-        const show = tabVal === 'all' || cardCat === tabVal;
+        const cat = card.getAttribute('data-cert-cat');
+        const show = filter === 'all' || cat === filter;
         card.style.display = show ? 'flex' : 'none';
       });
     });
   });
 
   // =========================================================================
-  // 13. MOODCANVAS LIVE HARMONIC PALETTE GENERATOR
+  // 10. MOODCANVAS HARMONIC PALETTE GENERATOR
   // =========================================================================
   const btnGenPalette = document.getElementById('btnGenPalette');
   const paletteSwatches = document.getElementById('paletteSwatches');
 
   const harmonicPalettes = [
     [
-      { hex: '#9D4EDD', name: 'Vibrant Violet', dark: true },
-      { hex: '#00F0FF', name: 'Electric Cyan', dark: false },
-      { hex: '#241442', name: 'Deep Obsidian', dark: true },
-      { hex: '#00B4D8', name: 'Ocean Aqua', dark: false }
+      { hex: '#9d4edd', name: 'Cyber Violet', dark: true },
+      { hex: '#00f0ff', name: 'Electric Cyan', dark: false },
+      { hex: '#241442', name: 'Deep Space', dark: true },
+      { hex: '#00b4d8', name: 'Pacific Blue', dark: false }
     ],
     [
-      { hex: '#EC4899', name: 'Neon Magenta', dark: true },
-      { hex: '#A855F7', name: 'Cyber Purple', dark: true },
-      { hex: '#38BDF8', name: 'Sky Electric', dark: false },
-      { hex: '#0F172A', name: 'Midnight Navy', dark: true }
+      { hex: '#10b981', name: 'Emerald Wave', dark: true },
+      { hex: '#064e3b', name: 'Forest Obsidian', dark: true },
+      { hex: '#34d399', name: 'Mint Glow', dark: false },
+      { hex: '#00f0ff', name: 'Cyan Accent', dark: false }
     ],
     [
-      { hex: '#10B981', name: 'Emerald Glow', dark: true },
-      { hex: '#06B6D4', name: 'Teal Flare', dark: false },
-      { hex: '#042F2E', name: 'Abyssal Deep', dark: true },
-      { hex: '#6EE7B7', name: 'Mint Ice', dark: false }
+      { hex: '#ec4899', name: 'Neon Rose', dark: true },
+      { hex: '#a855f7', name: 'Purple Ray', dark: true },
+      { hex: '#3b82f6', name: 'Royal Electric', dark: true },
+      { hex: '#fbcfe8', name: 'Blush Mist', dark: false }
     ],
     [
-      { hex: '#F59E0B', name: 'Solar Amber', dark: false },
-      { hex: '#EF4444', name: 'Crimson Pulse', dark: true },
-      { hex: '#8B5CF6', name: 'Nebula Violet', dark: true },
-      { hex: '#18181B', name: 'Carbon Black', dark: true }
+      { hex: '#f59e0b', name: 'Amber Gold', dark: true },
+      { hex: '#b45309', name: 'Deep Ochre', dark: true },
+      { hex: '#1e1b4b', name: 'Midnight Indigo', dark: true },
+      { hex: '#fbbf24', name: 'Sunbeam', dark: false }
     ]
   ];
 
@@ -608,10 +605,10 @@ function initPortfolio() {
       swatch.style.background = item.hex;
       swatch.style.color = item.dark ? '#ffffff' : '#000000';
       swatch.textContent = item.hex;
-      swatch.title = `Click to copy ${item.name} (${item.hex})`;
+      swatch.title = 'Click to copy ' + item.name + ' (' + item.hex + ')';
       
       swatch.addEventListener('click', () => {
-        copyToClipboard(item.hex, `Copied ${item.hex} (${item.name}) to clipboard!`);
+        copyToClipboard(item.hex, 'Copied ' + item.hex + ' (' + item.name + ') to clipboard!');
         swatch.style.transform = 'scale(1.15)';
         setTimeout(() => {
           swatch.style.transform = 'scale(1)';
@@ -627,21 +624,19 @@ function initPortfolio() {
       currentPaletteIdx = (currentPaletteIdx + 1) % harmonicPalettes.length;
       renderPalette(harmonicPalettes[currentPaletteIdx]);
     });
-
-    document.querySelectorAll('.palette-swatches-row .swatch-item').forEach(swatch => {
-      swatch.addEventListener('click', () => {
-        const hex = swatch.textContent.trim();
-        copyToClipboard(hex, `Copied ${hex} to clipboard!`);
-      });
-    });
   }
 
   // =========================================================================
-  // 14. WORKING CONTACT FORM WITH VALIDATION & FEEDBACK
+  // 11. CONTACT FORM WITH TRUTHFUL STATUS & MAILTO FALLBACK
   // =========================================================================
   const contactForm = document.getElementById('contactForm');
   const formStatusMsg = document.getElementById('formStatusMsg');
   const formSubmitBtn = document.getElementById('formSubmitBtn');
+  const formFallbackActions = document.getElementById('formFallbackActions');
+  const btnMailtoLaunch = document.getElementById('btnMailtoLaunch');
+  const btnCopyFormattedMsg = document.getElementById('btnCopyFormattedMsg');
+
+  let preparedMessage = '';
 
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -659,7 +654,7 @@ function initPortfolio() {
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
-        showFormStatus('Please enter a valid email address.', 'error');
+        showFormStatus('Please provide a valid email address.', 'error');
         return;
       }
 
@@ -668,111 +663,121 @@ function initPortfolio() {
         return;
       }
 
-      // Visual sending state
       if (formSubmitBtn) {
         formSubmitBtn.disabled = true;
-        formSubmitBtn.innerHTML = '<span>Sending Message...</span>';
+        formSubmitBtn.innerHTML = '<span>Formatting Message...</span>';
       }
 
       setTimeout(() => {
         if (formSubmitBtn) {
           formSubmitBtn.disabled = false;
-          formSubmitBtn.innerHTML = '<span>Send Message →</span>';
+          formSubmitBtn.innerHTML = '<span>Prepared! Re-submit or Copy Below →</span>';
         }
-        showFormStatus(`Thank you, ${name}! Your message has been prepared. You can also reach me directly at Sahithi's LinkedIn or via mailto link below.`, 'success');
+
+        // Truthful feedback: explain that client-side form triggers mail client
+        showFormStatus(
+          'Thank you, ' + name + '! Your inquiry has been formatted. Since this static portfolio does not store data on an external server, please launch your email client below or copy the message to send to sahithichukka2004@gmail.com directly.',
+          'info'
+        );
+
+        preparedMessage = 'From: ' + name + ' (' + email + ')\nSubject: ' + subject + '\n\n' + message;
+
+        const mailtoUrl = 'mailto:sahithichukka2004@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(preparedMessage);
         
-        // Open pre-populated mail client fallback seamlessly
-        const mailtoUrl = `mailto:sahithi.chukka@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
-        
-        contactForm.reset();
-      }, 900);
+        if (btnMailtoLaunch) {
+          btnMailtoLaunch.href = mailtoUrl;
+        }
+
+        if (formFallbackActions) {
+          formFallbackActions.style.display = 'flex';
+        }
+
+      }, 500);
     });
+
+    if (btnCopyFormattedMsg) {
+      btnCopyFormattedMsg.addEventListener('click', () => {
+        if (preparedMessage) {
+          copyToClipboard(preparedMessage, 'Formatted message copied to clipboard!');
+        }
+      });
+    }
   }
 
   function showFormStatus(msg, type) {
     if (!formStatusMsg) return;
     formStatusMsg.textContent = msg;
-    formStatusMsg.className = `form-status-msg ${type}`;
+    formStatusMsg.className = 'form-status-msg ' + type;
+    formStatusMsg.style.display = 'block';
   }
 
   // =========================================================================
-  // 15. CLIPBOARD COPY UTILITIES
+  // 12. CLIPBOARD UTILITIES & TOAST FEEDBACK
   // =========================================================================
-  const btnCopyLinkedIn = document.getElementById('btnCopyLinkedIn');
-  const btnCopyGitHub = document.getElementById('btnCopyGitHub');
   const copyToast = document.getElementById('copyToast');
 
-  function copyToClipboard(text, message) {
+  function showToast(text) {
+    if (!copyToast) return;
+    copyToast.textContent = text;
+    copyToast.classList.add('show');
+    setTimeout(() => {
+      copyToast.classList.remove('show');
+    }, 2500);
+  }
+
+  function copyToClipboard(text, successMsg) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(() => {
-        showToast(message);
+        showToast(successMsg || 'Copied to clipboard!');
       }).catch(() => {
-        fallbackCopy(text, message);
+        fallbackCopy(text, successMsg);
       });
     } else {
-      fallbackCopy(text, message);
+      fallbackCopy(text, successMsg);
     }
   }
 
-  function fallbackCopy(text, message) {
-    const input = document.createElement('input');
-    input.value = text;
-    document.body.appendChild(input);
-    input.select();
+  function fallbackCopy(text, successMsg) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
     try {
       document.execCommand('copy');
-      showToast(message);
-    } catch (e) {
-      console.warn('Copy fallback failed', e);
+      showToast(successMsg || 'Copied to clipboard!');
+    } catch (err) {
+      showToast('Press Ctrl+C to copy');
     }
-    document.body.removeChild(input);
+    document.body.removeChild(ta);
   }
 
-  function showToast(message) {
-    if (!copyToast) return;
-    copyToast.textContent = message || '✓ Copied to clipboard!';
-    copyToast.style.display = 'block';
-    setTimeout(() => {
-      copyToast.style.display = 'none';
-    }, 2800);
-  }
-
+  const btnCopyLinkedIn = document.getElementById('btnCopyLinkedIn');
   if (btnCopyLinkedIn) {
-    btnCopyLinkedIn.addEventListener('click', (e) => {
-      e.preventDefault();
-      copyToClipboard('https://www.linkedin.com/in/sahithi-chukka-26b919290/', '✓ Copied LinkedIn Profile URL!');
+    btnCopyLinkedIn.addEventListener('click', () => {
+      copyToClipboard('https://www.linkedin.com/in/sahithi-chukka-26b919290/', 'LinkedIn URL copied to clipboard!');
     });
   }
 
+  const btnCopyGitHub = document.getElementById('btnCopyGitHub');
   if (btnCopyGitHub) {
-    btnCopyGitHub.addEventListener('click', (e) => {
-      e.preventDefault();
-      copyToClipboard('https://github.com/Sahithi200423/', '✓ Copied GitHub Profile URL!');
+    btnCopyGitHub.addEventListener('click', () => {
+      copyToClipboard('https://github.com/Sahithi200423/', 'GitHub profile URL copied to clipboard!');
     });
   }
 
-  // =========================================================================
-  // 16. LIGHTBOX MODAL EVENT LISTENERS
-  // =========================================================================
-  const lightboxModal = document.getElementById('lightboxModal');
+  // Close Lightbox Modal
   const modalCloseBtn = document.getElementById('modalCloseBtn');
-
-  if (modalCloseBtn) modalCloseBtn.addEventListener('click', window.closeLightbox);
-
-  if (lightboxModal) {
-    lightboxModal.addEventListener('click', (e) => {
-      if (e.target === lightboxModal) window.closeLightbox();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
-        window.closeLightbox();
-      }
-    });
-  }
+  const lightboxModal = document.getElementById('lightboxModal');
+  modalCloseBtn?.addEventListener('click', window.closeLightbox);
+  lightboxModal?.addEventListener('click', (e) => {
+    if (e.target === lightboxModal) window.closeLightbox();
+  });
 
   // =========================================================================
-  // 17. PORTFOLIO AI ASSISTANT INTERACTIVE CHATBOT
+  // 13. PORTFOLIO AI ASSISTANT CHATBOT
   // =========================================================================
   const chatbotTriggerBtn = document.getElementById('chatbotTriggerBtn');
   const chatbotModal = document.getElementById('chatbotModal');
@@ -782,128 +787,100 @@ function initPortfolio() {
   const chatbotMessages = document.getElementById('chatbotMessages');
   const chatbotChips = document.querySelectorAll('.chatbot-chip');
 
-  function toggleChatbot(forceOpen) {
-    if (!chatbotModal) return;
-    const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !chatbotModal.classList.contains('active');
-    chatbotModal.classList.toggle('active', shouldOpen);
-    if (shouldOpen) {
-      chatbotInput?.focus();
-    }
+  function openChatbot() {
+    chatbotModal?.classList.add('active');
   }
 
-  if (chatbotTriggerBtn) {
-    chatbotTriggerBtn.addEventListener('click', () => toggleChatbot());
+  function closeChatbot() {
+    chatbotModal?.classList.remove('active');
   }
 
-  if (chatbotCloseBtn) {
-    chatbotCloseBtn.addEventListener('click', () => toggleChatbot(false));
-  }
+  chatbotTriggerBtn?.addEventListener('click', () => {
+    const isActive = chatbotModal?.classList.contains('active');
+    if (isActive) closeChatbot();
+    else openChatbot();
+  });
 
-  // Knowledge base responses for Sahithi's portfolio
-  const portfolioKnowledge = [
+  chatbotCloseBtn?.addEventListener('click', closeChatbot);
+
+  const knowledgeBase = [
     {
-      keywords: ['education', 'college', 'degree', 'university', 'bachelor', 'btech', 'gpa', 'study'],
-      answer: "Sahithi holds a B.Tech in Computer Science and Engineering (2022–2026) from Andhra University College of Engineering (A), Andhra University, graduating with a 7.46 CGPA. Her core coursework includes Data Structures, Web Development, Databases, and Machine Learning."
+      keywords: ['education', 'degree', 'college', 'university', 'andhra', 'background', 'qualification'],
+      response: 'Sahithi Chukka is pursuing her B.Tech + M.Tech Dual Degree in Computer Science and Engineering at Andhra University College of Engineering (A), Visakhapatnam (Batch: 2022–2026). Her verified Semester V grade shows an SGPA of 7.32 (pass with 22 credits), with comprehensive coursework in Data Communications, AI, Compiler Design, and Python Programming.'
     },
     {
-      keywords: ['cinebook', 'movie', 'ticket', 'booking', 'concurrency', 'v2'],
-      answer: "CineBook V2 is Sahithi's full-stack movie booking system. It features an interactive 128-seat auditorium map, a 10-minute atomic PostgreSQL hold concurrency engine that eliminates double bookings (HTTP 409), a Three.js 3D ticket hero, Razorpay test payments, and 43 automated backend tests passing at 100%."
+      keywords: ['cinebook', 'movie', 'booking', 'concurrency', 'tickets', 'cinema'],
+      response: 'CineBook V3 is Sahithi&rsquo;s flagship full-stack cinema booking application. It features an interactive 128-seat auditorium map, real-time PostgreSQL atomic row locks with a 10-minute hold TTL to eliminate double bookings, a floating Three.js 3D ticket pass, and 43 automated backend security and concurrency tests passing with a 100% score.'
     },
     {
-      keywords: ['scenelingo', 'language', 'acting', 'telugu', 'speech', 'rehearsal'],
-      answer: "SceneLingo is an innovative language-learning and acting rehearsal platform. It helps learners master native Indian languages (starting with Telugu) through a 5-tier pedagogical transliteration, Web Speech API audio synthesis, and in-browser camera rehearsal recording."
+      keywords: ['skills', 'stack', 'technologies', 'react', 'typescript', 'languages'],
+      response: 'Sahithi specializes in Frontend Development and Web Application Engineering. Her primary stack includes React 19, TypeScript, Modern ES6+ JavaScript, Tailwind CSS 4, Three.js WebGL graphics, and Supabase (PostgreSQL). She also has expertise in Python, Node.js, and browser platform APIs (Web Speech API, MediaRecorder).'
     },
     {
-      keywords: ['groundwater', 'consultant', 'calculator', 'hydrology'],
-      answer: "Global Groundwater Consultants is an enterprise digital web application featuring 5 specialized hydrogeological calculators (recharge volume, rainwater harvesting, cost estimation with jsPDF export) and a 10-view administrative CRUD portal built with Supabase."
+      keywords: ['contact', 'email', 'linkedin', 'github', 'hire', 'reach', 'phone'],
+      response: 'You can connect with Sahithi on LinkedIn at linkedin.com/in/sahithi-chukka-26b919290/ or explore her GitHub repositories at github.com/Sahithi200423/. You can also email her at sahithichukka2004@gmail.com or download her official PDF resume from the header.'
     },
     {
-      keywords: ['skill', 'stack', 'tech', 'language', 'react', 'typescript'],
-      answer: "Sahithi specializes in Frontend Architecture (React 19, TypeScript, JavaScript ES6+, Semantic HTML5, Tailwind CSS 4), 3D Web Graphics (Three.js WebGL), Backend & Data (Node.js, Express, Supabase PostgreSQL with row-level locks), AI/ML (Python, Microsoft Azure ML), and DevOps (Vercel, Render, Git)."
+      keywords: ['resume', 'cv', 'pdf', 'download'],
+      response: 'You can download Sahithi&rsquo;s official PDF resume directly from the navigation bar or from the Resume card in the Contact section (assets/Chukka_Sahithi_resume.pdf).'
     },
     {
-      keywords: ['certif', 'microsoft', 'learn', 'azure', 'achievement'],
-      answer: "Sahithi holds two Microsoft Learn credentials from September 2026: 'Explore and Configure the Azure Machine Learning Workspace' and 'Develop Natural Language Solutions in Azure'. She also achieved a 100% pass rate on CineBook V2's 43 automated backend tests."
+      keywords: ['scenelingo', 'language', 'acting', 'telugu', 'speech'],
+      response: 'SceneLingo is an innovative bilingual EdTech and acting rehearsal web platform developed by Sahithi. It uses the browser MediaRecorder API for webcam video takes, Web Speech API for authentic Telugu audio pronunciation, and a 5-tier pedagogical transliteration framework.'
     },
     {
-      keywords: ['contact', 'hire', 'email', 'linkedin', 'reach', 'job', 'resume'],
-      answer: "You can connect with Sahithi on LinkedIn at linkedin.com/in/sahithi-chukka-26b919290/ or review her repositories at github.com/Sahithi200423. You can also download her official resume PDF directly using the button in the Contact section!"
+      keywords: ['groundwater', 'calculator', 'hydrogeology'],
+      response: 'Global Groundwater Consultants is an enterprise web application featuring 5 specialized mathematical engineering calculators for aquifer infiltration and rainwater harvesting, along with client-side jsPDF estimation reports and Supabase admin operations.'
     }
   ];
 
-  function getBotResponse(userQuery) {
-    const query = userQuery.toLowerCase();
-    for (const item of portfolioKnowledge) {
-      if (item.keywords.some(kw => query.includes(kw))) {
-        return item.answer;
-      }
-    }
-    return "Sahithi Chukka is a Frontend Developer and Computer Science Graduate from Andhra University skilled in React 19, TypeScript, Three.js, and Supabase. You can ask me about her education, CineBook V2, SceneLingo, technical skills, or how to contact her!";
-  }
-
-  function appendChatMessage(text, sender) {
+  function appendChatMsg(text, sender) {
     if (!chatbotMessages) return;
-    const msgDiv = document.createElement('div');
-    msgDiv.className = `chatbot-msg ${sender}`;
-    msgDiv.textContent = text;
-    chatbotMessages.appendChild(msgDiv);
+    const msgEl = document.createElement('div');
+    msgEl.className = 'chatbot-msg ' + sender;
+    msgEl.innerHTML = text;
+    chatbotMessages.appendChild(msgEl);
     chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
   }
 
-  function handleUserChat(messageText) {
-    const text = messageText.trim();
-    if (!text) return;
+  function handleUserQuery(query) {
+    if (!query) return;
+    appendChatMsg(query, 'user');
 
-    appendChatMessage(text, 'user');
-    if (chatbotInput) chatbotInput.value = '';
+    const clean = query.toLowerCase();
+    let reply = 'Thank you for your question! Sahithi is a Frontend Developer & Web Application Engineer specializing in React 19, TypeScript, and Three.js. Feel free to explore her projects or download her resume!';
 
-    // Typing indicator delay
+    for (const item of knowledgeBase) {
+      if (item.keywords.some(k => clean.includes(k))) {
+        reply = item.response;
+        break;
+      }
+    }
+
     setTimeout(() => {
-      const response = getBotResponse(text);
-      appendChatMessage(response, 'bot');
-    }, 450);
+      appendChatMsg(reply, 'bot');
+    }, 400);
   }
 
-  if (chatbotForm) {
-    chatbotForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      handleUserChat(chatbotInput?.value || '');
-    });
-  }
+  chatbotForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = chatbotInput?.value.trim();
+    if (val) {
+      handleUserQuery(val);
+      chatbotInput.value = '';
+    }
+  });
 
   chatbotChips.forEach(chip => {
     chip.addEventListener('click', () => {
-      const prompt = chip.getAttribute('data-prompt') || chip.textContent;
-      handleUserChat(prompt);
-    });
-  });
-
-  // =========================================================================
-  // 18. SMOOTH SCROLLING WITH NAVBAR OFFSET
-  // =========================================================================
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if (targetId && targetId !== '#') {
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          e.preventDefault();
-          const navOffset = 80;
-          const elementPosition = targetElement.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - navOffset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      }
+      const prompt = chip.getAttribute('data-prompt');
+      if (prompt) handleUserQuery(prompt);
     });
   });
 
 }
 
-// Safe initialization
+// Initialize on DOM ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initPortfolio);
 } else {

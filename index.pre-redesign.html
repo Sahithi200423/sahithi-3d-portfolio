@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahithi Chukka | Frontend Developer & Web Application Engineer</title>
+  <meta name="description" content="Portfolio of Sahithi Chukka — Frontend Developer and Computer Science Engineer specializing in React, TypeScript, Three.js 3D WebGL, modern UI architecture, and high-concurrency systems.">
+  <meta name="keywords" content="Sahithi Chukka, Sahithi, Frontend Developer, Web Application Engineer, React 19, TypeScript, Three.js, WebGL, Supabase, CineBook, Andhra University">
+  <meta name="author" content="Sahithi Chukka">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sahithi Chukka | Frontend Developer & Web Engineer">
+  <meta property="og:description" content="Building thoughtful, responsive, and high-performance web experiences with modern architecture, interactive graphics, and clean code.">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Fonts: Syne, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Background Interactive Particle Network Canvas -->
+  <canvas id="bgParticleCanvas" aria-hidden="true"></canvas>
+
+  <!-- Sticky Glassmorphism Navigation -->
+  <header class="navbar" id="mainNavbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-wrap" aria-label="Sahithi Chukka Portfolio Homepage">
+        <div class="brand-monogram">S</div>
+        <div class="brand-text">
+          <span class="brand-name">SAHITHI</span>
+          <span class="brand-role-mini">Frontend Developer</span>
+        </div>
+      </a>
+
+      <!-- Desktop Horizontal Navigation with Active Section Highlighting -->
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#github" class="nav-link">GitHub</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#certifications" class="nav-link">Certifications</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Desktop Nav Actions -->
+      <div class="nav-actions">
+        <!-- Futuristic Theme Accent Switcher -->
+        <button class="theme-accent-btn" id="themeAccentBtn" aria-label="Toggle Futuristic Theme Accent" title="Switch Theme Accent (Cyan / Emerald / Purple)">
+          ⚡
+        </button>
+        
+        <!-- Social Profiles -->
+        <a href="https://github.com/Sahithi200423/" target="_blank" rel="noopener noreferrer" class="nav-social-btn" aria-label="GitHub Profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/sahithi-chukka-26b919290/" target="_blank" rel="noopener noreferrer" class="nav-social-btn" aria-label="LinkedIn Profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        
+        <a href="#contact" class="btn-contact-nav">
+          <span>Contact Me</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+
+        <!-- Mobile Drawer Toggle -->
+        <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span id="menuIcon">☰</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =====================================================================
+         1. HERO SECTION
+         ===================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-content-wrap">
+        
+        <!-- Meta Label Bar -->
+        <div class="hero-meta-bar reveal-init">
+          <div class="hero-developer-badge">
+            <span class="status-dot"></span>
+            <span>FRONTEND DEVELOPER &bull; AVAILABLE FOR OPPORTUNITIES</span>
+          </div>
+          
+          <div class="hero-avatar-badge">
+            <img src="assets/github_avatar.png" alt="Sahithi Chukka GitHub Avatar" class="hero-avatar-mini-img">
+            <span class="hero-name-label">SAHITHI CHUKKA</span>
+          </div>
+        </div>
+
+        <!-- Enormous Typography -->
+        <div class="hero-giant-heading reveal-init">
+          <span class="hero-giant-word">BUILDING DIGITAL</span>
+          <span class="hero-giant-sub">EXPERIENCES</span>
+        </div>
+
+        <!-- Central 3D Visual Stage with Interactive Layering -->
+        <div class="hero-3d-stage reveal-init" id="heroStage">
+          <!-- Ambient Left Badge -->
+          <div class="hero-ambient-badge badge-left">
+            <span style="font-size: 1.25rem;">✨</span>
+            <div>
+              <strong style="color: #fff; font-size: 0.85rem; display: block;">Clean Interfaces</strong>
+              <span style="color: var(--neon-purple); font-size: 0.72rem; font-family: var(--font-mono);">Responsive &amp; Accessible</span>
+            </div>
+          </div>
+
+          <!-- 3D Visual Container -->
+          <div class="hero-3d-wrapper" id="hero3DWrapper">
+            <div class="hero-3d-glow" id="heroGlow"></div>
+            
+            <div class="hero-3d-visual" id="hero3DVisual">
+              <!-- View 1: 3D Female Developer Avatar with Holographic UI Panels -->
+              <div class="hero-view-pane hero-pane-avatar active" id="paneAvatar">
+                <img src="assets/hero_3d_character.jpg" alt="Stylized 3D Female Frontend Developer Avatar with Holographic Code Interface" class="hero-3d-image avatar-img">
+                
+                <!-- Floating Holographic UI Panels -->
+                <div class="holo-panel holo-panel-top-left" aria-hidden="true">
+                  <div class="holo-panel-header">
+                    <span class="holo-dot cyan"></span>
+                    <span class="holo-title">&lt;FrontendDev /&gt;</span>
+                  </div>
+                  <div class="holo-code-line">
+                    <span class="hl-keyword">const</span> <span class="hl-var">ui</span> = <span class="hl-str">"creative"</span>;
+                  </div>
+                </div>
+
+                <div class="holo-panel holo-panel-top-right" aria-hidden="true">
+                  <div class="holo-panel-header">
+                    <span class="holo-badge">REACT 19 &bull; THREE.JS</span>
+                  </div>
+                  <div class="holo-wave-indicator">
+                    <span class="holo-bar"></span>
+                    <span class="holo-bar"></span>
+                    <span class="holo-bar"></span>
+                    <span class="holo-bar"></span>
+                  </div>
+                </div>
+
+                <div class="holo-panel holo-panel-bottom" aria-hidden="true">
+                  <span class="holo-icon">⚡</span>
+                  <span class="holo-text">Interactive 3D Motion &amp; Responsive UI</span>
+                </div>
+              </div>
+
+              <!-- View 2: Liquid Chrome Sculpture -->
+              <div class="hero-view-pane hero-pane-sculpture" id="paneSculpture">
+                <img src="assets/hero_3d_sculpture.jpg" alt="Futuristic 3D Chrome Sculpture" class="hero-3d-image sculpture-img">
+              </div>
+
+              <!-- View 3: GitHub Verified Profile Avatar -->
+              <div class="hero-view-pane hero-pane-github" id="paneGithub" style="display: none; align-items: center; justify-content: center; height: 100%;">
+                <img src="assets/github_avatar.png" alt="Sahithi Chukka Verified Developer Profile" class="hero-3d-image" style="width: 220px; height: 220px; border-radius: 50%; border: 3px solid var(--electric-blue); box-shadow: 0 0 40px var(--electric-blue-glow);">
+              </div>
+            </div>
+
+            <!-- Switcher: 3D Avatar / Chrome Sculpture / GitHub Avatar -->
+            <div class="hero-visual-switch" role="group" aria-label="3D Visual Switcher">
+              <button class="switch-btn active" id="btnCharacter" aria-pressed="true" type="button" onclick="setHeroVisual('avatar')">
+                <span class="switch-icon">👩‍💻</span> 3D Avatar
+              </button>
+              <button class="switch-btn" id="btnSculpture" aria-pressed="false" type="button" onclick="setHeroVisual('sculpture')">
+                <span class="switch-icon">✦</span> 3D Sculpture
+              </button>
+              <button class="switch-btn" id="btnGithubAvatar" aria-pressed="false" type="button" onclick="setHeroVisual('github')">
+                <span class="switch-icon">🐙</span> GitHub
+              </button>
+            </div>
+          </div>
+
+          <!-- Ambient Right Badge -->
+          <div class="hero-ambient-badge badge-right">
+            <span style="font-size: 1.25rem;">⚡</span>
+            <div>
+              <strong style="color: #fff; font-size: 0.85rem; display: block;">Verified Projects</strong>
+              <span style="color: var(--electric-blue); font-size: 0.72rem; font-family: var(--font-mono);">100% Real Code &amp; Demos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Verified Statistics Row -->
+        <div class="hero-stats-row reveal-init">
+          <div class="stat-card">
+            <span class="stat-number">4+</span>
+            <span class="stat-label">Major Full-Stack &amp; AI Applications Built</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">43/43</span>
+            <span class="stat-label">Automated Backend Security &amp; E2E Tests Passed</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">18</span>
+            <span class="stat-label">Locales with Dynamic RTL Layout Mirroring</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">128</span>
+            <span class="stat-label">Seat Interactive Concurrency Hold Map</span>
+          </div>
+        </div>
+
+        <!-- Hero Bottom Grid (Intro Narrative + Clear CTAs) -->
+        <div class="hero-bottom-grid reveal-init">
+          <div>
+            <p class="hero-intro-text">
+              “I build thoughtful, responsive web experiences with a focus on clean interfaces, interaction, and usability.”
+            </p>
+            <div class="scroll-indicator-wrap">
+              <span class="scroll-line"></span>
+              <span>SCROLL TO EXPLORE WORK</span>
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              <span>Explore My Work</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <span>Contact Me</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </a>
+            <a href="assets/Chukka_Sahithi_resume.pdf" download class="btn btn-secondary" style="border-color: rgba(0, 240, 255, 0.3);">
+              <span>Resume (PDF) ↓</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         2. ABOUT SECTION
+         ===================================================================== -->
+    <section class="section" id="about">
+      <div class="container">
+        
+        <div class="about-editorial-wrap reveal-init">
+          <span class="section-label">Editorial Profile</span>
+          <h2 class="about-editorial-heading">
+            A LITTLE ABOUT ME
+          </h2>
+
+          <p class="about-intro-paragraph">
+            I am a <strong>Frontend Developer and Computer Science Graduate</strong> from Andhra University College of Engineering who genuinely enjoys engineering visually stunning, interactive, and user-friendly web applications. My philosophy centers around learning by building practical, real-world systems—combining clean semantic code with expressive typography, smooth transitions, and intuitive design patterns.
+          </p>
+
+          <!-- 5 Technical Specialty Pillars -->
+          <div class="about-pillars-grid">
+            
+            <div class="pillar-card">
+              <span class="pillar-number">01 / ARCHITECTURE</span>
+              <h3 class="pillar-title">Modern Frontend Architecture</h3>
+              <p class="pillar-desc">
+                Engineering component-driven web applications with React 19, TypeScript, and modern CSS engines. Prioritizing modular structures, strict type safety, and clean code hygiene.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <span class="pillar-number">02 / GRAPHICS</span>
+              <h3 class="pillar-title">3D WebGL Graphics &amp; Motion</h3>
+              <p class="pillar-desc">
+                Crafting interactive 3D elements using Three.js, CSS 3D transforms, and subtle micro-animations that deliver high visual impact with GPU optimization and touch scroll decoupling.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <span class="pillar-number">03 / CONCURRENCY</span>
+              <h3 class="pillar-title">Concurrency &amp; Database State</h3>
+              <p class="pillar-desc">
+                Solving high-contention web challenges using atomic PostgreSQL row locks in Supabase, 10-minute hold engines, and idempotent REST API integration to eliminate race conditions.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <span class="pillar-number">04 / HARDWARE &amp; MEDIA</span>
+              <h3 class="pillar-title">Hardware &amp; Browser APIs</h3>
+              <p class="pillar-desc">
+                Integrating native browser capabilities including Web Speech API for multilingual speech synthesis and MediaRecorder for in-browser video camera rehearsal recording.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <span class="pillar-number">05 / DEVOPS</span>
+              <h3 class="pillar-title">Cloud Deployment &amp; Reliability</h3>
+              <p class="pillar-desc">
+                Deploying production-ready frontends on Vercel Edge and backends on Render Cloud with single-hop reverse proxy trust configuration, timing-safe cryptographic checks, and regression test suites.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         3. EDUCATION SECTION (TIMELINE CARDS)
+         ===================================================================== -->
+    <section class="section" id="education">
+      <div class="container">
+        
+        <div class="section-header reveal-init">
+          <span class="section-label">Academic Foundation</span>
+          <h2 class="section-title-large">EDUCATION</h2>
+          <p class="section-subtitle">
+            Formal engineering background grounded in computer science principles, software architecture, data structures, and modern web application development.
+          </p>
+        </div>
+
+        <div class="education-timeline-wrap reveal-init">
+          
+          <!-- Timeline Item 01: B.Tech -->
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true">🎓</div>
+            
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-degree">Bachelor of Technology (B.Tech) &bull; Computer Science &amp; Engineering</h3>
+                  <div class="timeline-institution">
+                    <span>🏛 Andhra University College of Engineering (A), Andhra University</span>
+                  </div>
+                </div>
+                <div class="timeline-date-badge">2022 &ndash; 2026 &bull; CGPA: 7.46</div>
+              </div>
+
+              <p class="timeline-desc">
+                Comprehensive four-year computer science engineering degree. Focused on developing deep analytical skills, foundational data structures and algorithms, object-oriented software engineering, database management systems, and modern full-stack web technologies.
+              </p>
+
+              <div class="timeline-tags">
+                <span class="tech-tag">Data Structures &amp; Algorithms</span>
+                <span class="tech-tag">Web Technologies</span>
+                <span class="tech-tag">Database Management (SQL)</span>
+                <span class="tech-tag">Object-Oriented Programming (C++/Python)</span>
+                <span class="tech-tag">Machine Learning &amp; AI</span>
+                <span class="tech-tag">Operating Systems</span>
+                <span class="tech-tag">Computer Networks</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         4. EXPERIENCE SECTION (PROFESSIONAL ENGINEERING & PROJECTS)
+         ===================================================================== -->
+    <section class="section" id="experience">
+      <div class="container">
+        
+        <div class="section-header reveal-init">
+          <span class="section-label">Practical Milestones</span>
+          <h2 class="section-title-large">EXPERIENCE &amp; ENGINEERING</h2>
+          <p class="section-subtitle">
+            Hands-on software development experience gained by conceptualizing, architecting, and deploying high-performance web applications and verified software prototypes.
+          </p>
+        </div>
+
+        <div class="experience-grid reveal-init">
+          
+          <!-- Experience Card 01: Full-Stack Web Application Engineer -->
+          <article class="experience-card">
+            <div>
+              <div class="exp-header">
+                <h3 class="exp-role-title">Frontend Developer &amp; Web Application Engineer</h3>
+                <span class="exp-meta-badge">Personal &amp; Open-Source</span>
+              </div>
+              <span class="exp-period">2024 &ndash; Present &bull; Portfolio Showcase</span>
+
+              <ul class="exp-bullets-list">
+                <li class="exp-bullet-item">
+                  <span class="exp-bullet-icon">✦</span>
+                  <span><strong>CineBook V1 to V2 Architecture:</strong> Engineered a full-stack cinema ticket booking system with React 19, TypeScript, and Three.js 3D WebGL ticket visualization.</span>
+                </li>
+                <li class="exp-bullet-item">
+                  <span class="exp-bullet-icon">✦</span>
+                  <span><strong>Concurrency &amp; Atomic Row Locks:</strong> Implemented a 10-minute hold TTL in PostgreSQL to eliminate double-booking race conditions under high contention.</span>
+                </li>
+                <li class="exp-bullet-item">
+                  <span class="exp-bullet-icon">✦</span>
+                  <span><strong>Testing &amp; Security Hardening:</strong> Authored 43 automated backend tests verifying single-hop reverse proxy trust, rate limiting, and webhook idempotency.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="exp-tech-row">
+              <span class="tech-tag">React 19</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Three.js</span>
+              <span class="tech-tag">Supabase</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Vercel</span>
+            </div>
+          </article>
+
+          <!-- Experience Card 02: AI & Hardware Media Application Engineer -->
+          <article class="experience-card">
+            <div>
+              <div class="exp-header">
+                <h3 class="exp-role-title">Interactive AI &amp; Web Applications Developer</h3>
+                <span class="exp-meta-badge">EdTech &amp; Media Labs</span>
+              </div>
+              <span class="exp-period">2024 &ndash; 2026 &bull; Innovative Prototypes</span>
+
+              <ul class="exp-bullets-list">
+                <li class="exp-bullet-item">
+                  <span class="exp-bullet-icon">✦</span>
+                  <span><strong>SceneLingo Language AI:</strong> Built an acting rehearsal and Telugu language platform with Web Speech API audio synthesis and in-browser camera rehearsal recording.</span>
+                </li>
+                <li class="exp-bullet-item">
+                  <span class="exp-bullet-icon">✦</span>
+                  <span><strong>Global Groundwater Consultants:</strong> Developed 5 domain mathematical calculators for hydrogeology with client-side jsPDF reporting and Supabase administration CRUD.</span>
+                </li>
+                <li class="exp-bullet-item">
+                  <span class="exp-bullet-icon">✦</span>
+                  <span><strong>Multilingual Chatbot Solution:</strong> Created full-stack FAQ chatbot supporting English, Hindi, and Telugu with interactive language switching and fast responses.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="exp-tech-row">
+              <span class="tech-tag">Web Speech API</span>
+              <span class="tech-tag">MediaRecorder</span>
+              <span class="tech-tag">jsPDF</span>
+              <span class="tech-tag">Tailwind CSS</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">Python</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         5. SKILLS SECTION (INTERACTIVE CONSTELLATION + GROUPED CARDS)
+         ===================================================================== -->
+    <section class="section" id="skills">
+      <div class="container">
+        
+        <div class="section-header reveal-init">
+          <span class="section-label">Core Capabilities</span>
+          <h2 class="section-title-large">TECHNICAL SKILLS</h2>
+          <p class="section-subtitle">
+            Explore my technical ecosystem via the interactive technology constellation node network below, or filter by category across verified project implementations.
+          </p>
+        </div>
+
+        <!-- Interactive Tech Constellation Graph -->
+        <div class="constellation-wrapper reveal-init">
+          <div class="constellation-header-row">
+            <h3 class="constellation-title">
+              <span>✦ Interactive Technology Constellation</span>
+            </h3>
+            <span class="constellation-hint">Hover or click nodes to inspect verified stack connections</span>
+          </div>
+
+          <div class="constellation-canvas-box" id="constellationBox">
+            <canvas id="skillsConstellationCanvas"></canvas>
+          </div>
+
+          <div class="constellation-detail-panel" id="constellationInfo">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span id="nodeIcon" style="font-size: 1.5rem;">⚛</span>
+              <div>
+                <strong id="nodeName" style="color: #fff; font-size: 1.05rem; display: block;">React 19 &bull; Modern UI Architecture</strong>
+                <span id="nodeContext" style="color: var(--electric-blue); font-size: 0.82rem; font-family: var(--font-mono);">Utilized in CineBook V2, SceneLingo &amp; GroundWater Platform</span>
+              </div>
+            </div>
+            <span class="badge badge-verified" id="nodeProficiency">Verified in Production Code</span>
+          </div>
+        </div>
+
+        <!-- Interactive Category Filter -->
+        <div class="skills-filter-nav reveal-init" role="tablist" aria-label="Skills Filter">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Skills</button>
+          <button class="filter-btn" data-filter="frontend" role="tab" aria-selected="false">Frontend Core</button>
+          <button class="filter-btn" data-filter="frameworks" role="tab" aria-selected="false">Frameworks &amp; Styling</button>
+          <button class="filter-btn" data-filter="backend" role="tab" aria-selected="false">Backend &amp; Database</button>
+          <button class="filter-btn" data-filter="ai" role="tab" aria-selected="false">AI &amp; Cloud</button>
+          <button class="filter-btn" data-filter="tools" role="tab" aria-selected="false">Tools &amp; Deployment</button>
+        </div>
+
+        <!-- Skills Cards Grid -->
+        <div class="skills-categories-grid reveal-init">
+          
+          <!-- Category 01: Frontend Core -->
+          <div class="skill-category-card" data-category="frontend">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">⚛</div>
+              <span class="badge badge-purple">Core Language</span>
+            </div>
+            <h3 class="skill-cat-title">Frontend Fundamentals</h3>
+            <p class="skill-cat-desc">
+              Strong foundation in modern semantic markup, responsive layout engines, and dynamic browser logic.
+            </p>
+            <div class="skill-chips-wrap">
+              <span class="skill-chip skill-chip-highlight">HTML5 (Semantic)</span>
+              <span class="skill-chip skill-chip-highlight">CSS3 (Modern)</span>
+              <span class="skill-chip skill-chip-highlight">JavaScript (ES6+)</span>
+              <span class="skill-chip">Flexbox &amp; CSS Grid</span>
+              <span class="skill-chip">DOM Manipulation</span>
+              <span class="skill-chip">Responsive Viewports</span>
+            </div>
+          </div>
+
+          <!-- Category 02: Frameworks & Styling -->
+          <div class="skill-category-card" data-category="frameworks">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">🎨</div>
+              <span class="badge badge-cyan">UI &amp; Graphics</span>
+            </div>
+            <h3 class="skill-cat-title">Frameworks &amp; Graphics</h3>
+            <p class="skill-cat-desc">
+              Component-driven architectures and visual styling utilized across verified portfolio applications.
+            </p>
+            <div class="skill-chips-wrap">
+              <span class="skill-chip skill-chip-highlight">React 19</span>
+              <span class="skill-chip skill-chip-highlight">TypeScript</span>
+              <span class="skill-chip skill-chip-highlight">Three.js WebGL</span>
+              <span class="skill-chip skill-chip-highlight">Tailwind CSS 4</span>
+              <span class="skill-chip">CSS Custom Properties</span>
+              <span class="skill-chip">Framer Motion</span>
+            </div>
+          </div>
+
+          <!-- Category 03: Backend & Database -->
+          <div class="skill-category-card" data-category="backend">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">⚡</div>
+              <span class="badge badge-verified">Data &amp; Services</span>
+            </div>
+            <h3 class="skill-cat-title">Backend &amp; Database</h3>
+            <p class="skill-cat-desc">
+              Database integrations, row locks, and server endpoints applied in movie booking and client management.
+            </p>
+            <div class="skill-chips-wrap">
+              <span class="skill-chip skill-chip-highlight">Supabase (PostgreSQL)</span>
+              <span class="skill-chip skill-chip-highlight">Node.js API</span>
+              <span class="skill-chip">Express.js</span>
+              <span class="skill-chip">SQL Queries</span>
+              <span class="skill-chip">Row-Level Locks</span>
+              <span class="skill-chip">REST APIs &amp; Fetch</span>
+            </div>
+          </div>
+
+          <!-- Category 04: AI & Cloud -->
+          <div class="skill-category-card" data-category="ai">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">🧠</div>
+              <span class="badge badge-purple">AI &amp; Azure</span>
+            </div>
+            <h3 class="skill-cat-title">AI &amp; Cloud Technologies</h3>
+            <p class="skill-cat-desc">
+              Machine learning models, speech synthesis, and Microsoft Azure cloud solutions.
+            </p>
+            <div class="skill-chips-wrap">
+              <span class="skill-chip skill-chip-highlight">Python</span>
+              <span class="skill-chip skill-chip-highlight">Microsoft Azure</span>
+              <span class="skill-chip skill-chip-highlight">Azure Machine Learning</span>
+              <span class="skill-chip">Web Speech API</span>
+              <span class="skill-chip">MediaRecorder API</span>
+              <span class="skill-chip">TensorFlow (CNN)</span>
+            </div>
+          </div>
+
+          <!-- Category 05: Tools & Deployment -->
+          <div class="skill-category-card" data-category="tools">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">🛠</div>
+              <span class="badge badge-silver">Dev Workflow</span>
+            </div>
+            <h3 class="skill-cat-title">Tools &amp; Deployment</h3>
+            <p class="skill-cat-desc">
+              Version control, code editing, and continuous deployment environments verified in live operations.
+            </p>
+            <div class="skill-chips-wrap">
+              <span class="skill-chip skill-chip-highlight">Git &amp; GitHub</span>
+              <span class="skill-chip skill-chip-highlight">VS Code</span>
+              <span class="skill-chip skill-chip-highlight">Vercel Edge</span>
+              <span class="skill-chip">Render Cloud</span>
+              <span class="skill-chip">Vite Bundler</span>
+              <span class="skill-chip">Chrome DevTools</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         6. GITHUB LIVE INTEGRATION SECTION
+         ===================================================================== -->
+    <section class="section" id="github">
+      <div class="container">
+        
+        <div class="section-header reveal-init">
+          <span class="section-label">Open Source &amp; Code</span>
+          <h2 class="section-title-large">GITHUB ACTIVITY</h2>
+          <p class="section-subtitle">
+            Real repositories, commits, and code architectures verified via the GitHub API for developer profile <strong>@Sahithi200423</strong>.
+          </p>
+        </div>
+
+        <!-- GitHub Profile & Stats Banner -->
+        <div class="github-overview-card reveal-init">
+          <div class="github-user-row">
+            <div class="github-profile-brief">
+              <img src="assets/github_avatar.png" alt="Sahithi Chukka GitHub Avatar" class="github-avatar-img">
+              <div>
+                <h3 class="github-username">
+                  <span>Sahithi Chukka</span>
+                  <span class="badge badge-verified" style="font-size: 0.72rem;">Verified</span>
+                </h3>
+                <a href="https://github.com/Sahithi200423" target="_blank" rel="noopener noreferrer" class="github-user-link">
+                  github.com/Sahithi200423 ↗
+                </a>
+              </div>
+            </div>
+
+            <div class="github-stats-summary">
+              <div class="github-stat-pill">
+                <span class="github-stat-pill-num" id="githubRepoCount">9</span>
+                <span class="github-stat-pill-label">Public Repos</span>
+              </div>
+              <div class="github-stat-pill">
+                <span class="github-stat-pill-num">100%</span>
+                <span class="github-stat-pill-label">Test Pass Rate</span>
+              </div>
+              <div class="github-stat-pill">
+                <span class="github-stat-pill-num">TypeScript</span>
+                <span class="github-stat-pill-label">Primary Stack</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Language Distribution Bar -->
+          <div class="github-lang-bar-container">
+            <div class="github-lang-bar-title">
+              <span>Verified Repository Languages</span>
+              <span>Based on Active GitHub Codebases</span>
+            </div>
+            
+            <div class="lang-segmented-bar" aria-label="Language distribution bar">
+              <div class="lang-segment" style="width: 52%; background: #3178c6;" title="TypeScript 52%"></div>
+              <div class="lang-segment" style="width: 22%; background: #f7df1e;" title="JavaScript 22%"></div>
+              <div class="lang-segment" style="width: 14%; background: #3572a5;" title="Python 14%"></div>
+              <div class="lang-segment" style="width: 8%; background: #e34c26;" title="HTML/CSS 8%"></div>
+              <div class="lang-segment" style="width: 4%; background: #e38c00;" title="SQL 4%"></div>
+            </div>
+
+            <div class="lang-legend-row">
+              <div class="lang-legend-item">
+                <span class="lang-dot" style="background: #3178c6;"></span>
+                <span>TypeScript (52%)</span>
+              </div>
+              <div class="lang-legend-item">
+                <span class="lang-dot" style="background: #f7df1e;"></span>
+                <span>JavaScript (22%)</span>
+              </div>
+              <div class="lang-legend-item">
+                <span class="lang-dot" style="background: #3572a5;"></span>
+                <span>Python (14%)</span>
+              </div>
+              <div class="lang-legend-item">
+                <span class="lang-dot" style="background: #e34c26;"></span>
+                <span>HTML/CSS (8%)</span>
+              </div>
+              <div class="lang-legend-item">
+                <span class="lang-dot" style="background: #e38c00;"></span>
+                <span>SQL / Schema (4%)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Highlighted Repositories Grid -->
+        <div class="github-repos-grid reveal-init" id="githubReposGrid">
+          
+          <!-- Repo 01: Movie_booking -->
+          <div class="github-repo-card">
+            <div>
+              <div class="repo-card-top">
+                <span style="font-size: 1.4rem;">🎬</span>
+                <span class="badge badge-verified">43 Tests</span>
+              </div>
+              <h4 class="repo-card-title">Movie_booking</h4>
+              <p class="repo-card-desc">
+                Full-stack movie ticket booking web app with live seat inventory, real-time sync, interactive cinema layouts, and ₹15 demo payments.
+              </p>
+            </div>
+            <div class="repo-card-footer">
+              <span style="display: flex; align-items: center; gap: 6px;">
+                <span class="lang-dot" style="background: #3178c6;"></span> TypeScript
+              </span>
+              <a href="https://github.com/Sahithi200423/Movie_booking" target="_blank" rel="noopener noreferrer" style="color: var(--electric-blue); font-weight: 600;">
+                View Repo ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Repo 02: native-language-ai -->
+          <div class="github-repo-card">
+            <div>
+              <div class="repo-card-top">
+                <span style="font-size: 1.4rem;">🎙</span>
+                <span class="badge badge-purple">Web Speech</span>
+              </div>
+              <h4 class="repo-card-title">native-language-ai</h4>
+              <p class="repo-card-desc">
+                Interactive AI language-learning and communication platform designed to teach Indian native languages through guided practice and dialogue labs.
+              </p>
+            </div>
+            <div class="repo-card-footer">
+              <span style="display: flex; align-items: center; gap: 6px;">
+                <span class="lang-dot" style="background: #3178c6;"></span> TypeScript
+              </span>
+              <a href="https://github.com/Sahithi200423/native-language-ai" target="_blank" rel="noopener noreferrer" style="color: var(--electric-blue); font-weight: 600;">
+                View Repo ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Repo 03: GlobalGroundWater -->
+          <div class="github-repo-card">
+            <div>
+              <div class="repo-card-top">
+                <span style="font-size: 1.4rem;">💧</span>
+                <span class="badge badge-cyan">5 Calculators</span>
+              </div>
+              <h4 class="repo-card-title">GlobalGroundWater</h4>
+              <p class="repo-card-desc">
+                Full-stack hydrogeological survey and groundwater consulting web app with interactive data dashboards and AI-assisted field analysis.
+              </p>
+            </div>
+            <div class="repo-card-footer">
+              <span style="display: flex; align-items: center; gap: 6px;">
+                <span class="lang-dot" style="background: #3178c6;"></span> TypeScript
+              </span>
+              <a href="https://github.com/Sahithi200423/GlobalGroundWater" target="_blank" rel="noopener noreferrer" style="color: var(--electric-blue); font-weight: 600;">
+                View Repo ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Repo 04: Sahithi200423.github.io -->
+          <div class="github-repo-card">
+            <div>
+              <div class="repo-card-top">
+                <span style="font-size: 1.4rem;">🌐</span>
+                <span class="badge badge-silver">Portfolio</span>
+              </div>
+              <h4 class="repo-card-title">Sahithi200423.github.io</h4>
+              <p class="repo-card-desc">
+                Personal developer portfolio and daily learning log documenting programming fundamentals, algorithm practice, and web development.
+              </p>
+            </div>
+            <div class="repo-card-footer">
+              <span style="display: flex; align-items: center; gap: 6px;">
+                <span class="lang-dot" style="background: #e34c26;"></span> HTML/CSS
+              </span>
+              <a href="https://github.com/Sahithi200423/Sahithi200423.github.io" target="_blank" rel="noopener noreferrer" style="color: var(--electric-blue); font-weight: 600;">
+                View Repo ↗
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         7. SELECTED PROJECTS & INTERACTIVE GALLERY
+         ===================================================================== -->
+    <section class="section" id="projects">
+      <div class="container">
+        
+        <div class="section-header reveal-init">
+          <span class="section-label">Curated Work</span>
+          <h2 class="section-title-large">SELECTED PROJECTS</h2>
+          <p class="section-subtitle">
+            An editorial showcase of web applications and interactive prototypes built with attention to design fidelity, responsive layouts, and clean engineering.
+          </p>
+        </div>
+
+        <!-- Interactive Category Filter -->
+        <div class="projects-filter-nav reveal-init" role="tablist" aria-label="Projects Filter">
+          <button class="filter-btn active" data-proj-filter="all">All Projects</button>
+          <button class="filter-btn" data-proj-filter="fullstack">Full-Stack Apps</button>
+          <button class="filter-btn" data-proj-filter="ai">AI &amp; EdTech</button>
+          <button class="filter-btn" data-proj-filter="enterprise">Enterprise</button>
+          <button class="filter-btn" data-proj-filter="prototype">Interactive Prototypes</button>
+        </div>
+
+        <!-- Project Feed (Alternating Asymmetrical Agency Layout) -->
+        <div class="projects-feed">
+
+          <!-- PROJECT 01: CINEBOOK V3 -->
+          <article class="project-card-editorial reveal-init" data-category="fullstack">
+            <div class="project-grid-layout">
+              
+              <!-- Media Column with Hover Zoom -->
+              <div class="project-media-col" onclick="openLightbox('assets/screenshots/v3/01_homepage.png', 'CineBook V3 — Full-Stack Cinema Booking Portfolio Demo', 'Luxury Black-and-Gold Interface with Three.js 3D Floating Ticket Pass and Interactive Auditorium')">
+                <img src="assets/screenshots/v3/01_homepage.png" alt="CineBook V3 Movie Ticket Booking Interface Preview" class="project-preview-image">
+                <div class="project-media-overlay">
+                  <span class="zoom-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+                    Click to view full preview
+                  </span>
+                </div>
+              </div>
+
+              <!-- Information Column -->
+              <div class="project-info-col">
+                <div>
+                  <div class="project-num-watermark">01</div>
+                  <div class="project-header-meta">
+                    <span class="project-cat-name">Full-Stack Cinema Demo &bull; Live Deployed</span>
+                    <span class="badge badge-verified">CineBook V3</span>
+                  </div>
+
+                  <h3 class="project-title">CineBook V3</h3>
+                  <div style="font-size: 0.95rem; font-weight: 700; color: var(--accent-cyan); margin-top: -6px; margin-bottom: 12px;">Full-Stack Cinema Booking Portfolio Demo</div>
+                  
+                  <p class="project-description">
+                    A responsive full-stack cinema-booking demonstration featuring movie discovery, interactive seat selection, simulated checkout, and digital demo tickets. Built with a luxury black-and-gold aesthetic, real-time seat hold concurrency, sub-second rendering, and PostgreSQL persistence.
+                  </p>
+
+                  <div class="project-features-list">
+                    <div class="feature-bullet">
+                      <span class="feature-bullet-icon">🎟️</span>
+                      <span><strong>Auditorium Seat Map:</strong> 128 seats arranged across VIP Recliner, Prime, and Standard tiers with uniform ₹5 demo pricing.</span>
+                    </div>
+                    <div class="feature-bullet">
+                      <span class="feature-bullet-icon">⚡</span>
+                      <span><strong>Atomic Hold &amp; Sync:</strong> 10-minute temporary seat lock preventing collisions, with instant pending lock visual feedback.</span>
+                    </div>
+                    <div class="feature-bullet">
+                      <span class="feature-bullet-icon">✨</span>
+                      <span><strong>Three.js 3D Hero:</strong> Floating holographic cinema pass with bounded tilt and mobile touch scroll decoupling.</span>
+                    </div>
+                  </div>
+
+                  <div class="project-tags">
+                    <span class="tech-tag">React 19</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Three.js</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Express</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Supabase</span>
+                    <span class="tech-tag">Vercel</span>
+                  </div>
+                </div>
+
+                <div class="project-actions">
+                  <a href="https://cinebook-v3.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <span>Live Demo ↗</span>
+                  </a>
+                  <a href="https://github.com/Sahithi200423/Movie_booking" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                    <span>View Code ↗</span>
+                  </a>
+                  <a href="cinebook.html" class="btn btn-secondary" style="padding: 14px 20px;">
+                    <span>Case Study ➔</span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- PROJECT 02: MOODCANVAS -->
+          <article class="project-card-editorial reveal-init" data-category="prototype">
+            <div class="project-grid-layout project-grid-reverse">
+              
+              <!-- Media Column with Hover Zoom -->
+              <div class="project-media-col" onclick="openLightbox('assets/screenshots/moodcanvas_preview.jpg', 'MoodCanvas — Mood Discovery & Palette Platform', 'Interactive Mood Selection & Dynamic Harmonic Palette Generator')">
+                <img src="assets/screenshots/moodcanvas_preview.jpg" alt="MoodCanvas Mood Discovery and Color Palette Generator Concept" class="project-preview-image">
+                <div class="project-media-overlay">
+                  <span class="zoom-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+                    Click to view full preview
+                  </span>
+                </div>
+              </div>
+
+              <!-- Information Column -->
+              <div class="project-info-col">
+                <div>
+                  <div class="project-num-watermark">02</div>
+                  <div class="project-header-meta">
+                    <span class="project-cat-name">Interactive Concept &amp; Design</span>
+                    <span class="badge badge-concept">Design &amp; Prototype</span>
+                  </div>
+
+                  <h3 class="project-title">MoodCanvas — Mood Discovery &amp; Inspiration</h3>
+                  
+                  <p class="project-description">
+                    An interactive mood discovery and design inspiration web platform. Conceptualized and engineered for creative developers and designers to explore dynamic aesthetic palettes, curated inspiration cards, and responsive theme moods.
+                  </p>
+
+                  <div class="project-features-list">
+                    <div class="feature-bullet">
+                      <span class="feature-bullet-icon">✦</span>
+                      <span><strong>Mood Selection:</strong> Interactive mood category cards with real-time aesthetic tone switching.</span>
+                    </div>
+                    <div class="feature-bullet">
+                      <span class="feature-bullet-icon">✦</span>
+                      <span><strong>Dynamic Color Palettes:</strong> Algorithmic color harmony generator with one-click hex code copying.</span>
+                    </div>
+                    <div class="feature-bullet">
+                      <span class="feature-bullet-icon">✦</span>
+                      <span><strong>Curated Inspiration:</strong> Glassmorphism visual board with saved favorites and mobile layouts.</span>
+                    </div>
+                  </div>
+
+                  <!-- Live Interactive Palette Generator Widget Demo -->
+                  <div class="live-palette-interactive">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--electric-blue); text-transform: uppercase;">Interactive Demo: Live Swatches</span>
+                      <button class="palette-btn-trigger" id="btnGenPalette" aria-label="Generate new harmonic palette">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                        <span>Randomize</span>
+                      </button>
+                    </div>
+                    <div class="palette-swatches-row" id="paletteSwatches">
+                      <div class="swatch-item" style="background: #9d4edd;" title="Click to copy">#9D4EDD</div>
+                      <div class="swatch-item" style="background: #00f0ff; color: #000;" title="Click to copy">#00F0FF</div>
+                      <div class="swatch-item" style="background: #241442;" title="Click to copy">#241442</div>
+                      <div class="swatch-item" style="background: #00b4d8; color: #000;" title="Click to copy">#00B4D8</div>
+                    </div>
+                    <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Click any swatch to copy HEX to clipboard</span>
+                  </div>
+
+                  <div class="project-tags" style="margin-top: 20px;">
+                    <span class="tech-tag">Modern JavaScript</span>
+                    <span class="tech-tag">Vanilla CSS</span>
+                    <span class="tech-tag">Color Harmonies</span>
+                    <span class="tech-tag">Interactive UI</span>
+                    <span class="tech-tag">UI Concept</span>
+                  </div>
+                </div>
+
+                <div class="project-actions">
+                  <span class="badge badge-purple" style="font-size: 0.82rem; padding: 10px 18px;">
+                    Active Prototype In Development
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- PROJECT 03: SCENELINGO NATIVE LANGUAGE AI -->
+          <article class="project-card-editorial reveal-init" data-category="ai">
+            <div class="project-grid-layout">
+              
+              <!-- Media Column with Hover Zoom -->
+              <div class="project-media-col" onclick="openLightbox('assets/screenshots/native-language-ai/hero.png', 'SceneLingo — Native Language AI & Acting Practice', '5-Tier Transliteration, Rehearsal Studio & Emotion Guides')">
+                <img src="assets/screenshots/native-language-ai/hero.png" alt="SceneLingo Native Language AI Application Interface" class="project-preview-image">
+                <div class="project-media-overlay">
+                  <span class="zoom-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+                    Click to view full preview
+                  </span>
+                </div>
+              </div>
+
+              <!-- Information Column -->
+              <div class="project-info-col">
+                <div>
+                  <div class="project-num-watermark">03</div>
+                  <div class="project-header-meta">
+                    <span class="project-cat-name">EdTech &amp; Creative Arts &bull; Verified Repo</span>
+                    <span class="badge badge-verified">GitHub: Verified</span>
+                  </div>
+
+                  <h3 class="project-title">SceneLingo — Language &amp; Acting Practice AI</h3>
+                  
+                  <p class="project-description">
+                    An innovative bilingual language-learning and acting rehearsal web application. Helps performers and learners master native Indian languages—starting with Telugu—through English-letter transliteration, emotion studios, and in-browser camera rehearsal.
+                  </p>
+
+                  <div class="project-features-list">
+                    <div class="feature-bullet">
+                      <span class="feature-bullet-icon">✦</span>
+                      <span><strong>5-Tier Pedagogy:</strong> Native Script, English Transliteration, Phonetics, English Meaning, and Contextual Subtext.</span>
+                    </div>
+                    <div class="feature-bullet">
+                      <span class="feature-bullet-icon">✦</span>
+                      <span><strong>Dialogue Lab:</strong> 16 dramatic scenes across Romantic, Conflict, and Audition themes with 20 actor emotion studios.</span>
+                    </div>
+                    <div class="feature-bullet">
+                      <span class="feature-bullet-icon">✦</span>
+                      <span><strong>Hardware Integration:</strong> In-browser video recording via MediaRecorder and speech synthesis audio playback.</span>
+                    </div>
+                  </div>
+
+                  <div class="project-tags">
+                    <span class="tech-tag">React 19</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Web Speech API</span>
+                    <span class="tech-tag">MediaRecorder</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">Vite</span>
+                  </div>
+                </div>
+
+                <div class="project-actions">
+                  <a href="https://github.com/Sahithi200423/native-language-ai.git" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <span>View Repository ↗</span>
+                  </a>
+                  <a href="native-language-ai.html" class="btn btn-secondary">
+                    <span>Language Case Study →</span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- PROJECT 04: GLOBAL GROUNDWATER CONSULTANTS -->
+          <article class="project-card-editorial reveal-init" data-category="enterprise">
+            <div class="project-grid-layout project-grid-reverse">
+              
+              <!-- Media Visual -->
+              <div class="project-media-col" style="background: radial-gradient(circle at center, #0f172a 0%, #050508 100%); padding: 36px;" onclick="window.location.href='groundwater.html'">
+                <div style="text-align: center; max-width: 320px;">
+                  <span style="font-size: 3.5rem; display: block; margin-bottom: 16px;">💧</span>
+                  <h4 style="color: #38bdf8; font-size: 1.4rem; margin-bottom: 8px;">Hydrogeological Tools</h4>
+                  <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">
+                    5 domain mathematical calculators for aquifer infiltration, rainwater harvesting, and jsPDF client-side cost estimation.
+                  </p>
+                </div>
+                <div class="project-media-overlay">
+                  <span class="zoom-badge">
+                    <span>Read Full Case Study →</span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Information Column -->
+              <div class="project-info-col">
+                <div>
+                  <div class="project-num-watermark">04</div>
+                  <div class="project-header-meta">
+                    <span class="project-cat-name">Enterprise Business Web App</span>
+                    <span class="badge badge-silver">Verified Repo</span>
+                  </div>
+
+                  <h3 class="project-title">Global Groundwater Consultants Platform</h3>
+                  
+                  <p class="project-description">
+                    An enterprise digital platform for an environmental hydrogeology consultancy firm. Combines service marketing, 5 specialized technical engineering calculators, and a comprehensive 10-view administrative management portal.
+                  </p>
+
+                  <div class="project-features-list">
+                    <div class="feature-bullet">
+                      <span class="feature-bullet-icon">✦</span>
+                      <span><strong>5 Scientific Calculators:</strong> Groundwater Recharge, Rainwater Harvesting, Water Requirement, Cost Estimator, and Unit Converter.</span>
+                    </div>
+                    <div class="feature-bullet">
+                      <span class="feature-bullet-icon">✦</span>
+                      <span><strong>Admin Operations:</strong> Full CRUD for appointments, inquiries, projects, and career applications via Supabase.</span>
+                    </div>
+                  </div>
+
+                  <div class="project-tags">
+                    <span class="tech-tag">React 18</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Supabase</span>
+                    <span class="tech-tag">jsPDF Export</span>
+                    <span class="tech-tag">Framer Motion</span>
+                  </div>
+                </div>
+
+                <div class="project-actions">
+                  <a href="https://github.com/Sahithi200423/GlobalGroundWater" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <span>View Repository ↗</span>
+                  </a>
+                  <a href="groundwater.html" class="btn btn-secondary">
+                    <span>Groundwater Case Study →</span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         8. CERTIFICATIONS & ACHIEVEMENTS SECTION
+         ===================================================================== -->
+    <section class="section" id="certifications">
+      <div class="container">
+        
+        <div class="section-header reveal-init">
+          <span class="section-label">Credentials &amp; Milestones</span>
+          <h2 class="section-title-large">CERTIFICATIONS &amp; ACHIEVEMENTS</h2>
+          <p class="section-subtitle">
+            Formal technical credentials from Microsoft Learn alongside verified software engineering achievements and testing accomplishments.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="cert-tabs-nav reveal-init" role="tablist">
+          <button class="filter-btn active" data-cert-tab="all">All Credentials</button>
+          <button class="filter-btn" data-cert-tab="microsoft">Microsoft Learn</button>
+          <button class="filter-btn" data-cert-tab="milestones">Engineering Milestones</button>
+        </div>
+
+        <div class="cert-cards-grid reveal-init">
+          
+          <!-- Cert 01: Azure ML -->
+          <div class="cert-card" data-cert-cat="microsoft">
+            <div>
+              <span class="cert-issuer-badge">
+                <span>☁ Microsoft Learn</span>
+              </span>
+              <h3 class="cert-title">Explore and Configure the Azure Machine Learning Workspace</h3>
+              <span class="cert-date">Issued September 2026 &bull; Official Credential</span>
+              <p class="cert-desc">
+                Completed hands-on configuration of Azure Machine Learning workspaces, compute instances, data assets, experiments, and model training pipelines in Microsoft Azure.
+              </p>
+            </div>
+            <div class="cert-status-row">
+              <span class="badge badge-cyan">Cloud &amp; ML</span>
+              <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #10b981;">✓ Verified</span>
+            </div>
+          </div>
+
+          <!-- Cert 02: Natural Language Solutions in Azure -->
+          <div class="cert-card" data-cert-cat="microsoft">
+            <div>
+              <span class="cert-issuer-badge">
+                <span>🤖 Microsoft Learn</span>
+              </span>
+              <h3 class="cert-title">Develop Natural Language Solutions in Azure</h3>
+              <span class="cert-date">Issued September 2026 &bull; Official Credential</span>
+              <p class="cert-desc">
+                Learned techniques for building natural language processing solutions, text analysis, sentiment classification, and conversational language understanding on Microsoft Azure.
+              </p>
+            </div>
+            <div class="cert-status-row">
+              <span class="badge badge-purple">NLP &amp; AI</span>
+              <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #10b981;">✓ Verified</span>
+            </div>
+          </div>
+
+          <!-- Achievement 01: 43 Tests CineBook V2 -->
+          <div class="cert-card" data-cert-cat="milestones">
+            <div>
+              <span class="cert-issuer-badge" style="border-color: rgba(168, 85, 247, 0.3); color: var(--neon-purple);">
+                <span>🛡 Testing Excellence</span>
+              </span>
+              <h3 class="cert-title">43/43 Automated Backend Test Suite Passing</h3>
+              <span class="cert-date">October 2026 &bull; CineBook V2 Production Hardening</span>
+              <p class="cert-desc">
+                Authored and verified 23 security tests (proxy isolation, IP rotation mitigation, webhook idempotency) and 20 end-to-end booking tests with 100% pass rate.
+              </p>
+            </div>
+            <div class="cert-status-row">
+              <span class="badge badge-verified">100% Pass Rate</span>
+              <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #10b981;">✓ Verified</span>
+            </div>
+          </div>
+
+          <!-- Achievement 02: 18-Language i18n & RTL -->
+          <div class="cert-card" data-cert-cat="milestones">
+            <div>
+              <span class="cert-issuer-badge" style="border-color: rgba(236, 72, 153, 0.3); color: var(--neon-magenta);">
+                <span>🌍 Internationalization</span>
+              </span>
+              <h3 class="cert-title">18-Language i18n with Full RTL Layout Mirroring</h3>
+              <span class="cert-date">2026 &bull; Full-Stack Localization Architecture</span>
+              <p class="cert-desc">
+                Built custom Context-based internationalization supporting 18 global and regional Indian languages, complete with automated right-to-left layout direction switching for Urdu.
+              </p>
+            </div>
+            <div class="cert-status-row">
+              <span class="badge badge-purple">18 Locales</span>
+              <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #10b981;">✓ Verified</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         9. CONTACT SECTION & RESUME DOWNLOAD
+         ===================================================================== -->
+    <section class="section" id="contact">
+      <div class="container">
+        
+        <div class="contact-section-wrap reveal-init">
+          <span class="section-label">Get in Touch</span>
+          
+          <h2 class="contact-huge-title">
+            <span>LET'S BUILD</span>
+            <span class="gradient-neon-text">SOMETHING GREAT.</span>
+          </h2>
+
+          <p class="contact-lead">
+            I am actively open to <strong>Frontend Developer</strong> and full-stack engineering roles, collaborative web projects, and exciting opportunities. Send a message below or connect with me on LinkedIn and GitHub.
+          </p>
+
+          <!-- 2-Column Grid: Working Contact Form + Resume Download & Verified Profiles -->
+          <div class="contact-grid-layout">
+            
+            <!-- Column 1: Working Contact Form -->
+            <div class="contact-form-container">
+              <h3 class="contact-form-title">Send a Message</h3>
+              <p class="contact-form-subtitle">Have a project or opportunity? Reach out directly using this form.</p>
+
+              <form class="contact-form" id="contactForm" novalidate>
+                <div class="form-group">
+                  <label for="formName" class="form-label">Your Name</label>
+                  <input type="text" id="formName" class="form-input" placeholder="e.g. Alex Morgan" required autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                  <label for="formEmail" class="form-label">Email Address</label>
+                  <input type="email" id="formEmail" class="form-input" placeholder="alex@company.com" required autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                  <label for="formSubject" class="form-label">Subject</label>
+                  <input type="text" id="formSubject" class="form-input" placeholder="Frontend Developer Role / Project Discussion" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="formMessage" class="form-label">Message</label>
+                  <textarea id="formMessage" class="form-textarea" placeholder="Hi Sahithi, I saw your portfolio and would love to connect..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="formSubmitBtn" style="width: 100%;">
+                  <span>Send Message →</span>
+                </button>
+
+                <div class="form-status-msg" id="formStatusMsg" role="alert"></div>
+              </form>
+            </div>
+
+            <!-- Column 2: Resume Download & Verified Links -->
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+              
+              <!-- Resume Download Box -->
+              <div class="resume-download-card">
+                <div>
+                  <div class="resume-badge-row">
+                    <span class="badge badge-cyan">Official Document</span>
+                    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">PDF &bull; Verified</span>
+                  </div>
+
+                  <h3 class="resume-title">Download Resume</h3>
+                  <p class="resume-desc">
+                    Comprehensive resume detailing computer science engineering degree from Andhra University, technical competencies, verified projects, and certifications.
+                  </p>
+                </div>
+
+                <div class="resume-actions-group">
+                  <a href="assets/Chukka_Sahithi_resume.pdf" download="Chukka_Sahithi_Resume.pdf" class="btn btn-primary" style="background: linear-gradient(135deg, var(--neon-purple), var(--electric-blue)); border: none; color: #fff;">
+                    <span>Download Official PDF ↓</span>
+                  </a>
+                  <a href="assets/Chukka_Sahithi_Resume.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                    <span>View Resume in Browser ↗</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Verified LinkedIn & GitHub Cards -->
+              <div class="contact-cards-grid" style="grid-template-columns: 1fr; margin-top: 0;">
+                
+                <!-- LinkedIn Card -->
+                <div class="verified-profile-card">
+                  <div>
+                    <div class="profile-card-top">
+                      <div class="profile-icon-large">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                      </div>
+                      <span class="badge badge-verified">Primary Contact</span>
+                    </div>
+
+                    <h4 class="profile-title" style="font-size: 1.1rem;">Connect on LinkedIn</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 10px;">
+                      Message me directly for job inquiries or networking.
+                    </p>
+                    <div class="profile-url-display" style="font-size: 0.78rem;">
+                      linkedin.com/in/sahithi-chukka-26b919290/
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: 8px; margin-top: 14px;">
+                    <a href="https://www.linkedin.com/in/sahithi-chukka-26b919290/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex: 1; padding: 10px 16px; font-size: 0.82rem;">
+                      <span>Open LinkedIn ↗</span>
+                    </a>
+                    <button class="btn btn-secondary" id="btnCopyLinkedIn" style="padding: 10px 14px;" title="Copy LinkedIn URL">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- GitHub Card -->
+                <div class="verified-profile-card">
+                  <div>
+                    <div class="profile-card-top">
+                      <div class="profile-icon-large">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                      </div>
+                      <span class="badge badge-purple">Repositories</span>
+                    </div>
+
+                    <h4 class="profile-title" style="font-size: 1.1rem;">Explore on GitHub</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 10px;">
+                      Review complete repository commits and branch histories.
+                    </p>
+                    <div class="profile-url-display" style="font-size: 0.78rem;">
+                      github.com/Sahithi200423/
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: 8px; margin-top: 14px;">
+                    <a href="https://github.com/Sahithi200423/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="flex: 1; padding: 10px 16px; font-size: 0.82rem;">
+                      <span>Open GitHub ↗</span>
+                    </a>
+                    <button class="btn btn-secondary" id="btnCopyGitHub" style="padding: 10px 14px;" title="Copy GitHub URL">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Toast Copy Feedback -->
+          <div class="copy-feedback-banner" id="copyToast" role="alert">
+            ✓ Copied link to clipboard!
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Screenshot Lightbox Modal -->
+  <div class="modal-overlay" id="lightboxModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+    <div class="modal-content-wrap">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close image preview">✕</button>
+      <img src="" alt="" class="modal-image-view" id="modalLightboxImg">
+      <div class="modal-footer">
+        <div>
+          <h4 id="modalHeading" style="color: #fff; font-size: 1.05rem;">Screenshot Preview</h4>
+          <p id="modalSubtext" style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;"></p>
+        </div>
+        <span class="badge badge-verified">Verified Asset</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio AI Assistant Floating Button & Modal -->
+  <button class="chatbot-trigger-btn" id="chatbotTriggerBtn" aria-label="Open Sahithi Portfolio AI Assistant" title="Chat with Sahithi Portfolio Assistant">
+    <span class="chatbot-pulse-dot" aria-hidden="true"></span>
+    💬
+  </button>
+
+  <div class="chatbot-modal" id="chatbotModal" role="dialog" aria-label="Portfolio AI Assistant">
+    <div class="chatbot-header">
+      <div class="chatbot-header-info">
+        <div class="chatbot-avatar">🤖</div>
+        <div>
+          <div class="chatbot-header-title">Sahithi Portfolio Assistant</div>
+          <div class="chatbot-header-status">&bull; Online &bull; Verified Assistant</div>
+        </div>
+      </div>
+      <button class="chatbot-close-btn" id="chatbotCloseBtn" aria-label="Close Assistant">✕</button>
+    </div>
+
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="chatbot-msg bot">
+        Hello! I am Sahithi&rsquo;s Portfolio Assistant. Ask me about her education at Andhra University, her projects (CineBook V2, SceneLingo), technical skills, or how to contact her!
+      </div>
+    </div>
+
+    <!-- Quick Question Chips -->
+    <div class="chatbot-chips">
+      <button class="chatbot-chip" data-prompt="Tell me about Sahithi's background">Education &amp; Degree</button>
+      <button class="chatbot-chip" data-prompt="What is CineBook V2?">CineBook V2</button>
+      <button class="chatbot-chip" data-prompt="What are her core skills?">Core Skills</button>
+      <button class="chatbot-chip" data-prompt="How can I contact her?">Contact Info</button>
+    </div>
+
+    <form class="chatbot-input-bar" id="chatbotForm">
+      <input type="text" class="chatbot-input-field" id="chatbotInput" placeholder="Ask a question..." autocomplete="off">
+      <button type="submit" class="chatbot-send-btn" aria-label="Send message">➔</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <h4>SAHITHI CHUKKA</h4>
+          <p>
+            Frontend Developer &amp; Computer Science Engineer building thoughtful, responsive, and high-performance web experiences with modern architecture, interactive graphics, and clean code.
+          </p>
+          <div style="display: flex; gap: 12px; margin-top: 18px;">
+            <a href="https://github.com/Sahithi200423/" target="_blank" rel="noopener noreferrer" class="nav-social-btn" aria-label="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/sahithi-chukka-26b919290/" target="_blank" rel="noopener noreferrer" class="nav-social-btn" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Portfolio Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="#about">About Profile</a></li>
+            <li><a href="#education">Education &amp; Degree</a></li>
+            <li><a href="#experience">Engineering Experience</a></li>
+            <li><a href="#skills">Interactive Skills Constellation</a></li>
+            <li><a href="#github">GitHub Repositories</a></li>
+            <li><a href="#projects">Curated Projects</a></li>
+            <li><a href="#certifications">Certifications &amp; Achievements</a></li>
+            <li><a href="#contact">Contact &amp; Resume</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Case Studies &amp; Demos</h5>
+          <ul class="footer-links">
+            <li><a href="https://cinebook-v3.vercel.app/" target="_blank" rel="noopener noreferrer">CineBook V3 Live Demo ↗</a></li>
+            <li><a href="cinebook.html">CineBook Architecture Study →</a></li>
+            <li><a href="native-language-ai.html">SceneLingo Language AI Study →</a></li>
+            <li><a href="groundwater.html">Groundwater Platform Study →</a></li>
+            <li><a href="assets/Chukka_Sahithi_resume.pdf" download>Download Resume (PDF) ↓</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 Sahithi Chukka. All rights reserved. Crafted with clean code and responsive design.</p>
+        <p><a href="#hero" style="color: var(--electric-blue);">Back to top ↑</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
